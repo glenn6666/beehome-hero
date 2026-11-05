@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>蜂宅空間設計 BeeHome</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:#2b2925;background:#faf8f4}
+.hero{position:relative;height:100vh;min-height:420px;overflow:hidden}
+.layer{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.after{--x:70%;--y:50%;--r:220px;
+ -webkit-mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),#000 88%,transparent 100%);
+ mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),#000 88%,transparent 100%)}
+.before{filter:grayscale(.5) brightness(.85)}
+.ring{position:absolute;left:0;top:0;border:1.5px solid rgba(255,255,255,.9);border-radius:50%;pointer-events:none;box-shadow:0 0 18px rgba(0,0,0,.15);z-index:3}
+.veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(250,248,244,.92) 0%,rgba(250,248,244,.7) 32%,rgba(250,248,244,0) 60%);pointer-events:none}
+.hex{position:absolute;inset:0;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cpath d='M28 0l28 16v32L28 64 0 48V16zM28 64l28 16v32M28 64L0 80v32' fill='none' stroke='%23b8862b' stroke-width='1.2'/%3E%3C/svg%3E");
+ -webkit-mask-image:linear-gradient(90deg,#000,transparent 45%);mask-image:linear-gradient(90deg,#000,transparent 45%)}
+nav{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:26px 56px;z-index:5}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:.12em}
+.logo svg{width:26px}
+.links{display:flex;gap:34px;font-size:14px;letter-spacing:.1em}
+.links a{color:#2b2925;text-decoration:none;opacity:.8}.links a:hover{opacity:1;color:#b8862b}
+.btn{display:inline-block;padding:11px 24px;border-radius:999px;background:#2b2925;color:#fff;text-decoration:none;font-size:14px;letter-spacing:.12em;transition:.25s}
+.btn:hover{background:#b8862b}
+.btn.ghost{background:transparent;color:#2b2925;border:1px solid #2b2925}
+.copy{position:absolute;left:56px;top:50%;transform:translateY(-45%);max-width:480px;z-index:4}
+.eyebrow{font-size:12px;letter-spacing:.35em;color:#b8862b;margin-bottom:22px}
+h1{font-size:46px;line-height:1.35;font-weight:500;letter-spacing:.06em;margin-bottom:22px}
+.sub{font-size:16px;line-height:1.9;color:#5d5850;margin-bottom:36px}
+.hint{position:absolute;right:56px;bottom:36px;font-size:12px;letter-spacing:.25em;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5);z-index:4}
+.tag{position:absolute;bottom:36px;left:56px;font-size:12px;letter-spacing:.2em;color:#8a847a;z-index:4}
+@media(max-width:800px){nav{padding:18px 20px}.links{display:none}.copy{left:20px;right:20px;top:auto;bottom:90px;transform:none}h1{font-size:30px}
+.veil{background:linear-gradient(0deg,rgba(250,248,244,.95) 0%,rgba(250,248,244,.6) 45%,rgba(250,248,244,0) 70%)}.tag{display:none}.hint{right:20px;top:22px;bottom:auto;font-size:11px}}
+</style></head><body>
+<section class="hero" id="hero">
+ <img class="layer before" src="before.jpg" alt="裝修前">
+ <img class="layer after" id="after" src="after.jpg" alt="裝修後">
+ <div class="veil"></div><div class="ring" id="ring"></div><div class="hex"></div>
+ <div class="copy">
+  <div class="eyebrow">BEEHOME INTERIOR DESIGN</div>
+  <h1>以蜂巢為構想，<br>讓空間有秩序</h1>
+  <p class="sub">把設計融入生活中…</p>
+  <a class="btn" href="https://www.beehome.live/portfolio/%E8%A3%9D%E4%BF%AE%E8%A9%A6%E7%AE%97" target="_blank" rel="noopener">免費裝修試算</a>&nbsp;&nbsp;<a class="btn ghost" href="https://www.beehome.live/portfolio/%E5%85%A8%E9%83%A8%E4%BD%9C%E5%93%81" target="_blank" rel="noopener">看作品</a>
+ </div>
+ <div class="tag">BEFORE ／ AFTER</div>
+ <div class="hint" id="hint">移動游標，看見改變 →</div>
+</section>
+<script>
+const ring=document.getElementById('ring');const el=document.getElementById('after'),hero=document.getElementById('hero');
+let tx=innerWidth*.7,ty=innerHeight*.5,x=tx,y=ty,r=0,tr=210,user=false,t0=performance.now();
+const touch=matchMedia('(hover:none)').matches||('ontouchstart' in window);
+if(touch)document.getElementById('hint').textContent='滑動看見改變 →';
+function setT(cx,cy){const b=hero.getBoundingClientRect();tx=cx-b.left;ty=cy-b.top;user=true;tr=innerWidth<800?150:210}
+hero.addEventListener('mousemove',e=>setT(e.clientX,e.clientY));
+hero.addEventListener('mouseleave',()=>{tr=0});
+hero.addEventListener('touchstart',e=>{const t=e.touches[0];setT(t.clientX,t.clientY)},{passive:true});
+hero.addEventListener('touchmove',e=>{const t=e.touches[0];setT(t.clientX,t.clientY)},{passive:true});
+hero.addEventListener('touchend',()=>{user=false;t0=performance.now()});
+window._rv=()=>({x,y,r});window.setReveal=(px,py,rad)=>{tx=x=px;ty=y=py;tr=r=rad||210;user=true};
+(function loop(n){
+ if(!user&&(touch||n-t0>0)){const t=(n-t0)/1000,w=innerWidth,h=innerHeight;
+  tx=w*(.62+.2*Math.sin(t*.6));ty=h*(.45+.18*Math.sin(t*.9));tr=innerWidth<800?150:210}
+ x+=(tx-x)*.09;y+=(ty-y)*.09;r+=(tr-r)*.08;
+ el.style.setProperty('--x',x+'px');el.style.setProperty('--y',y+'px');el.style.setProperty('--r',r+'px');const rr=r*.94;ring.style.width=ring.style.height=2*rr+'px';ring.style.transform=`translate(${x-rr}px,${y-rr}px)`;ring.style.opacity=r>20?1:0;
+ requestAnimationFrame(loop)})(performance.now());
+</script></body></html>
