@@ -69,17 +69,21 @@
     .hamburger{display:none;border:0;background:transparent;color:inherit;padding:10px}
     .hamburger svg{width:23px;height:23px}
 
-    .hero{min-height:780px;height:min(920px,100svh);position:relative;display:flex;align-items:center;color:#fff;background:#27241f;isolation:isolate}
-    .hero-photo{position:absolute;inset:0;z-index:-2;background-image:linear-gradient(90deg,rgba(18,16,12,.78) 0%,rgba(18,16,12,.46) 46%,rgba(18,16,12,.12) 100%),url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=85');background-size:cover;background-position:center 52%}
-    .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.28),transparent 23%,transparent 66%,rgba(12,10,8,.32))}
-    .hero-copy{padding-top:124px;position:relative;z-index:2}
+    .hero{min-height:780px;height:min(920px,100svh);position:relative;display:flex;align-items:center;color:#fff;background:#27241f;isolation:isolate;overflow:hidden}
+    .hero-photo{position:absolute;inset:0;z-index:0;background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=85');background-size:cover;background-position:center 52%}
+    .hero-photo-dim{filter:grayscale(.5) brightness(.85)}
+    .hero-photo-lit{--x:70%;--y:50%;--r:220px;z-index:1;-webkit-mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),#000 88%,transparent 100%);mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),#000 88%,transparent 100%)}
+    .hero-veil{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(18,16,12,.72) 0%,rgba(18,16,12,.42) 32%,rgba(18,16,12,0) 62%),linear-gradient(180deg,rgba(0,0,0,.28),transparent 23%,transparent 66%,rgba(12,10,8,.32))}
+    .spot-ring{position:absolute;left:0;top:0;border:1.5px solid rgba(255,255,255,.9);border-radius:50%;pointer-events:none;box-shadow:0 0 18px rgba(0,0,0,.15);z-index:3;opacity:0}
+    .hero-copy{padding-top:124px;position:relative;z-index:4}
+    .hero h1,.hero-text{text-shadow:0 2px 18px rgba(0,0,0,.4)}
     .hero .overline{display:flex;align-items:center;gap:16px;margin-bottom:26px}
     .hero .overline::before{content:"";display:block;width:30px;height:1px;background:var(--accent-soft)}
     .hero h1{margin:0 0 28px;font-size:clamp(44px,5.8vw,86px);font-weight:400;letter-spacing:-.04em;line-height:1.35}
     .hero h1 em{color:var(--accent-light);font-weight:300;font-style:normal}
     .hero-text{max-width:470px;color:rgba(255,255,255,.79);font-size:15px;line-height:2.05;font-weight:300;letter-spacing:.05em}
     .hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:36px}
-    .hero-bottom{position:absolute;bottom:42px;left:0;right:0;display:flex;align-items:flex-end;justify-content:space-between;gap:22px}
+    .hero-bottom{position:absolute;bottom:42px;left:0;right:0;display:flex;align-items:flex-end;justify-content:space-between;gap:22px;z-index:4}
     .scroll-indicator{display:flex;align-items:center;gap:13px;color:rgba(255,255,255,.8);font-size:10px;letter-spacing:.23em;font-weight:600;font-family:'DM Sans',sans-serif}
     .scroll-indicator .bar{width:46px;height:1px;background:rgba(255,255,255,.6)}
     .hero-index{color:rgba(255,255,255,.72);font-size:12px;letter-spacing:.18em;font-family:'DM Sans',sans-serif}
@@ -130,13 +134,15 @@
     .scene-tab:hover{border-color:#d4cbb8}
     .scene-tab.active{background:#f4efe6;color:var(--ink);border-color:#f4efe6}
     .scene-desc{font-size:12px;line-height:1.9;color:#d4cfc4;border-left:1px solid var(--accent-soft);padding-left:15px;max-width:360px;min-height:46px}
-    .smart-photo{position:relative;background:#2a2620;min-height:680px;isolation:isolate}
-    .smart-photo::before{content:"";position:absolute;inset:0;z-index:-2;background-image:url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1450&q=85');background-size:cover;background-position:center;filter:var(--scene-filter,brightness(.93)) saturate(.8);transition:filter .8s}
-    .smart-photo::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(26,24,20,.25),transparent 55%),rgba(18,16,12,var(--scene-tint,.07));transition:background .6s}
-    .scene-hint{position:absolute;left:34px;top:41px;display:flex;align-items:center;gap:9px;font-size:10px;color:#fff;text-shadow:0 1px 6px #111;letter-spacing:.17em;font-family:'DM Sans',sans-serif}
+    .smart-photo{position:relative;background:#2a2620;min-height:680px;isolation:isolate;overflow:hidden}
+    .scene-photo{position:absolute;inset:0;z-index:0;background-image:url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1450&q=85');background-size:cover;background-position:center;pointer-events:none;transition:filter .8s}
+    .scene-photo-dim{filter:var(--scene-filter,brightness(.93)) saturate(.8) grayscale(.5) brightness(.85)}
+    .scene-photo-lit{--x:70%;--y:50%;--r:220px;z-index:1;filter:var(--scene-filter,brightness(.93)) saturate(.8);-webkit-mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),#000 88%,transparent 100%);mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),#000 88%,transparent 100%)}
+    .smart-photo::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(26,24,20,.25),transparent 55%),rgba(18,16,12,var(--scene-tint,.07));transition:background .6s}
+    .scene-hint{position:absolute;left:34px;top:41px;z-index:5;display:flex;align-items:center;gap:9px;font-size:10px;color:#fff;text-shadow:0 1px 6px #111;letter-spacing:.17em;font-family:'DM Sans',sans-serif}
     .scene-hint .indicator{width:8px;height:8px;background:var(--accent-light);border:2px solid rgba(255,255,255,.6);border-radius:50%}
-    .photo-note{position:absolute;left:34px;top:68px;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.8);text-shadow:0 1px 6px #111;background:rgba(26,24,20,.4);padding:4px 9px;border:1px dashed rgba(255,255,255,.35)}
-    .control-panel{position:absolute;right:34px;bottom:38px;width:min(380px,calc(100% - 68px));padding:24px 24px 20px;background:rgba(250,248,244,.91);color:var(--ink);backdrop-filter:blur(24px);box-shadow:0 25px 65px rgba(12,10,8,.18);border:1px solid rgba(255,255,255,.8)}
+    .photo-note{position:absolute;left:34px;top:68px;z-index:5;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.8);text-shadow:0 1px 6px #111;background:rgba(26,24,20,.4);padding:4px 9px;border:1px dashed rgba(255,255,255,.35)}
+    .control-panel{position:absolute;right:34px;bottom:38px;z-index:5;width:min(380px,calc(100% - 68px));padding:24px 24px 20px;background:rgba(250,248,244,.91);color:var(--ink);backdrop-filter:blur(24px);box-shadow:0 25px 65px rgba(12,10,8,.18);border:1px solid rgba(255,255,255,.8)}
     .panel-header{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(43,41,37,.12);padding-bottom:17px}
     .panel-header strong{font-size:15px;font-weight:700}
     .panel-header small{color:var(--muted);font-size:10px;letter-spacing:.08em;font-family:'DM Sans',sans-serif}
@@ -265,7 +271,7 @@
       .brandname span{font-size:8px}
       .nav-cta{font-size:11px;padding:0 10px;min-height:35px}
       .hero{min-height:670px;height:100svh}
-      .hero-photo{background-position:59% center;background-image:linear-gradient(90deg,rgba(18,16,12,.76),rgba(18,16,12,.28)),url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80')}
+      .hero-photo{background-position:59% center;background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80')}
       .hero-copy{padding-top:36px}
       .hero h1{font-size:clamp(40px,10.5vw,58px);line-height:1.45}
       .hero-text{font-size:13px;max-width:325px}
@@ -316,6 +322,10 @@
       html{scroll-behavior:auto}
       .reveal{opacity:1;transform:none}
       *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+      .hero-photo-dim{filter:grayscale(.25) brightness(.95)}
+      .hero-photo-lit,.scene-photo-lit{--x:70%!important;--y:50%!important;--r:280px!important}
+      .scene-photo-dim{filter:var(--scene-filter,brightness(.93)) saturate(.85) brightness(.95)}
+      .spot-ring{display:none}
     }
   </style>
 </head>
@@ -352,8 +362,11 @@
   </header>
 
   <main id="top">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-photo" role="img" aria-label="溫潤現代住宅室內氛圍圖，示意用，待換成蜂宅實景"></div>
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="hero-photo hero-photo-dim" role="img" aria-label="溫潤現代住宅室內氛圍圖，示意用，待換成蜂宅實景"></div>
+      <div class="hero-photo hero-photo-lit" id="heroLit" aria-hidden="true"></div>
+      <div class="hero-veil"></div>
+      <div class="spot-ring" id="heroRing" aria-hidden="true"></div>
       <div class="wrap hero-copy">
         <div class="overline light">BEEHOME · SMART LIVING</div>
         <h1 id="hero-title">半夜起床，<br>燈會<em>自己亮起來</em>。</h1>
@@ -368,7 +381,7 @@
         <div class="float-title">人走進，燈就亮。</div>
         <div class="float-status"><span>走廊微光已開</span><span>存在感應中</span></div>
       </div>
-      <div class="wrap hero-bottom"><span class="scroll-indicator"><span class="bar"></span>SCROLL</span><span class="hero-index">01 — 05</span></div>
+      <div class="wrap hero-bottom"><span class="scroll-indicator" id="lightHint"><span class="bar"></span>移動游標，燈會亮起來</span><span class="hero-index">01 — 05</span></div>
     </section>
 
     <section id="why" class="manifesto" aria-labelledby="why-title">
@@ -442,6 +455,9 @@
           <p class="scene-desc" id="sceneDesc" aria-live="polite">半夜起床，走廊只亮剛剛好的微光，不用摸黑找開關，也不會把客廳大燈一次打開。</p>
         </div>
         <div class="smart-photo" id="sceneVisual" aria-label="生活情境燈光示範畫面">
+          <div class="scene-photo scene-photo-dim"></div>
+          <div class="scene-photo scene-photo-lit" id="sceneLit"></div>
+          <div class="spot-ring" id="sceneRing" aria-hidden="true"></div>
           <div class="scene-hint"><span class="indicator"></span> SCENE PREVIEW</div>
           <div class="photo-note">氛圍示意 · 待換成蜂宅實景或短影片</div>
           <div class="control-panel" aria-live="polite">
@@ -628,6 +644,40 @@
     }
     menuToggle.addEventListener('click',()=>setMenu(!header.classList.contains('menu-open')));
     document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+
+    const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const touch=matchMedia('(hover:none)').matches||('ontouchstart' in window);
+    const hint=document.getElementById('lightHint');
+    if(hint&&touch){const bar=hint.querySelector('.bar');hint.textContent='';if(bar)hint.appendChild(bar);hint.appendChild(document.createTextNode('滑動，燈會亮起來'));}
+
+    function attachSpotlight(root,lit,ring){
+      if(!root||!lit)return;
+      function radius(){return innerWidth<800?150:210}
+      if(reduced){
+        lit.style.setProperty('--x','70%');
+        lit.style.setProperty('--y','50%');
+        lit.style.setProperty('--r',(innerWidth<800?200:280)+'px');
+        if(ring)ring.style.opacity=0;
+        return;
+      }
+      let tx=root.clientWidth*.7,ty=root.clientHeight*.5,x=tx,y=ty,r=0,tr=radius(),user=false,t0=performance.now();
+      function setT(cx,cy){const b=root.getBoundingClientRect();tx=cx-b.left;ty=cy-b.top;user=true;tr=radius()}
+      function inside(cx,cy){const b=root.getBoundingClientRect();return cx>=b.left&&cx<=b.right&&cy>=b.top&&cy<=b.bottom}
+      document.addEventListener('mousemove',e=>{if(inside(e.clientX,e.clientY))setT(e.clientX,e.clientY);else tr=0},{passive:true});
+      root.addEventListener('touchstart',e=>{const t=e.touches[0];setT(t.clientX,t.clientY)},{passive:true});
+      root.addEventListener('touchmove',e=>{const t=e.touches[0];setT(t.clientX,t.clientY)},{passive:true});
+      root.addEventListener('touchend',()=>{user=false;t0=performance.now()});
+      (function loop(n){
+        const b=root.getBoundingClientRect(),w=b.width,h=b.height;
+        if(!user&&(touch||n-t0>0)){const t=(n-t0)/1000;tx=w*(.62+.2*Math.sin(t*.6));ty=h*(.45+.18*Math.sin(t*.9));tr=radius()}
+        x+=(tx-x)*.09;y+=(ty-y)*.09;r+=(tr-r)*.08;
+        lit.style.setProperty('--x',x+'px');lit.style.setProperty('--y',y+'px');lit.style.setProperty('--r',r+'px');
+        if(ring){const rr=r*.94;ring.style.width=ring.style.height=2*rr+'px';ring.style.transform='translate('+(x-rr)+'px,'+(y-rr)+'px)';ring.style.opacity=r>20?1:0}
+        requestAnimationFrame(loop);
+      })(performance.now());
+    }
+    attachSpotlight(document.getElementById('hero'),document.getElementById('heroLit'),document.getElementById('heroRing'));
+    attachSpotlight(document.getElementById('sceneVisual'),document.getElementById('sceneLit'),document.getElementById('sceneRing'));
 
     const scenes={
       night:{title:'夜起微亮',desc:'半夜起床，走廊只亮剛剛好的微光，不用摸黑找開關，也不會把客廳大燈一次打開。',light:'18% · 暖黃微光',sensor:'感應中',curtain:'維持關閉',away:'關閉',filter:'brightness(.4) sepia(.18) saturate(.8)',tint:'.32'},
