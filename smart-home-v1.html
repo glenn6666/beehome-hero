@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>蜂宅空間設計｜智能家居（預覽草稿）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:#2b2925;background:#faf8f4;line-height:1.7}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+.draft{background:#2b2925;color:#e9e4da;font-size:12px;letter-spacing:.12em;text-align:center;padding:8px 16px}
+.draft b{color:#d4a64a;font-weight:500}
+.hex{position:fixed;inset:0;pointer-events:none;opacity:.07;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cpath d='M28 0l28 16v32L28 64 0 48V16zM28 64l28 16v32M28 64L0 80v32' fill='none' stroke='%23b8862b' stroke-width='1.2'/%3E%3C/svg%3E");-webkit-mask-image:linear-gradient(135deg,#000 10%,transparent 55%);mask-image:linear-gradient(135deg,#000 10%,transparent 55%)}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 56px}
+.eyebrow{font-size:12px;letter-spacing:.35em;color:#b8862b}
+h1{font-size:46px;line-height:1.35;font-weight:500;letter-spacing:.06em;margin:16px 0 18px}
+h2{font-size:28px;font-weight:500;letter-spacing:.18em;text-align:center}
+.bar{width:44px;height:2px;background:#b8862b;margin:12px auto 18px}
+.lead,.sub{font-size:16px;line-height:1.9;color:#5d5850}
+h1,h2{text-wrap:balance}
+.sec{padding:88px 0}
+.sec-head{max-width:640px;margin:0 auto 48px;text-align:center}
+.sec-head .sub{margin-top:8px}
+.btn{display:inline-block;padding:12px 26px;border-radius:999px;background:#2b2925;color:#fff;text-decoration:none;font-size:14px;letter-spacing:.12em;transition:.25s;border:1px solid #2b2925;font-family:inherit;cursor:pointer}
+.btn:hover{background:#b8862b;border-color:#b8862b}
+.btn.ghost{background:transparent;color:#2b2925}
+.btn.ghost:hover{background:#2b2925;color:#fff}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+
+/* hero */
+.hero{padding:56px 0 36px}
+.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
+.note{font-size:13px;color:#8a847a;margin-top:22px;line-height:1.8}
+.stage{background:#fff;border:1px solid #ece6da;border-radius:20px;padding:18px 18px 14px;box-shadow:0 12px 40px rgba(43,41,37,.05)}
+.stage figcaption{font-size:12px;letter-spacing:.2em;color:#8a847a;text-align:center;margin-top:10px}
+
+/* scene illustration */
+.illu{width:100%;height:auto;border-radius:14px;background:#efe8db;overflow:hidden}
+.floor-lit,.cone,.lamp-glow,.aura{opacity:0;animation:lighton 8s ease-in-out infinite}
+.sensor-ring{transform-origin:112px 168px;transform-box:fill-box;animation:pulse 8s ease-in-out infinite}
+.person{animation:walk 8s ease-in-out infinite}
+@keyframes walk{
+  0%{transform:translate(8px,0);opacity:0}
+  8%{opacity:1}
+  38%{transform:translate(210px,0);opacity:1}
+  78%{transform:translate(355px,0);opacity:1}
+  90%{opacity:0}
+  100%{transform:translate(355px,0);opacity:0}
+}
+@keyframes lighton{
+  0%,16%{opacity:0}
+  28%,80%{opacity:1}
+  92%,100%{opacity:0}
+}
+@keyframes pulse{
+  0%,16%{opacity:.2}
+  28%,80%{opacity:.9}
+  92%,100%{opacity:.2}
+}
+
+/* scenes */
+.scenes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:#fff;border:1px solid #ece6da;border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.media{position:relative;aspect-ratio:16/10;background:linear-gradient(180deg,#f3eee4,#e8dfd0);display:flex;align-items:center;justify-content:center}
+.ph{text-align:center;color:#8a847a;font-size:13px;letter-spacing:.08em;line-height:1.7;padding:16px}
+.ph .mark{display:inline-block;font-size:11px;letter-spacing:.16em;border:1px dashed #c8b896;color:#b8862b;border-radius:999px;padding:3px 10px;margin-bottom:8px}
+.card-body{padding:22px 22px 24px}
+.card-body h3{font-size:20px;font-weight:500;letter-spacing:.06em;margin-bottom:8px;line-height:1.45}
+.card-body p{font-size:14px;color:#5d5850;line-height:1.85}
+
+/* why */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.why article{background:#fff;border:1px solid #ece6da;border-radius:18px;padding:28px 24px}
+.icon{width:48px;height:48px;margin-bottom:16px}
+.why h3{font-size:18px;font-weight:500;letter-spacing:.08em;margin-bottom:10px}
+.why p{font-size:14px;color:#5d5850;line-height:1.85}
+
+/* tiers */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+.tier{background:#fff;border:1px solid #ece6da;border-radius:18px;padding:28px 24px 24px;display:flex;flex-direction:column}
+.tier.featured{border-color:#d4a64a;box-shadow:0 10px 32px rgba(184,134,43,.12)}
+.tier .tag{font-size:11px;letter-spacing:.2em;color:#b8862b;margin-bottom:8px}
+.tier h3{font-size:22px;font-weight:500;letter-spacing:.08em;margin-bottom:6px}
+.price{font-size:18px;font-weight:500;margin:8px 0 6px}
+.price em{font-style:normal;color:#b8862b}
+.price-sub{font-size:12px;color:#8a847a;letter-spacing:.06em;margin-bottom:16px}
+.tier ul{list-style:none;font-size:14px;color:#5d5850;line-height:1.9;margin-bottom:22px;flex:1}
+.tier li{padding-left:18px;position:relative}
+.tier li::before{content:"";position:absolute;left:0;top:.7em;width:7px;height:7px;border-radius:50%;background:#b8862b}
+
+/* cases */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.case{background:#fff;border:1px dashed #d9cfbb;border-radius:18px;overflow:hidden}
+.case .media{aspect-ratio:4/3;background:#f3eee4}
+.case .card-body{padding:18px 20px 22px}
+.case h3{font-size:16px;font-weight:500;letter-spacing:.12em;margin-bottom:6px}
+
+/* close */
+.close{background:#2b2925;color:#e9e4da;padding:72px 0 56px;margin-top:24px}
+.close .wrap{text-align:center}
+.close h2{color:#faf8f4;letter-spacing:.18em}
+.close .bar{background:#d4a64a}
+.close .sub{color:#cfc8bb;max-width:560px;margin:0 auto 28px}
+.close .btn{background:#d4a64a;border-color:#d4a64a;color:#2b2925}
+.close .btn:hover{background:#e8cf98;border-color:#e8cf98}
+.close .btn.ghost{background:transparent;color:#faf8f4;border-color:#faf8f4}
+.close .btn.ghost:hover{background:#faf8f4;color:#2b2925}
+.close .links{margin-top:22px;font-size:13px;color:#a59f94;letter-spacing:.04em}
+.close .links a{color:#e9e4da;text-decoration:none;border-bottom:1px solid #6a655c}
+.close .links a:hover{color:#d4a64a;border-color:#d4a64a}
+
+@media(max-width:900px){
+  .wrap{padding:0 20px}
+  h1{font-size:30px}
+  h2{font-size:24px;letter-spacing:.12em}
+  .hero{padding:32px 0 12px}
+  .hero-grid,.scenes,.why,.tiers,.cases{grid-template-columns:1fr;gap:16px}
+  .sec{padding:56px 0}
+  .sec-head{margin-bottom:28px}
+  .cta .btn{width:100%;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+  .person,.floor-lit,.cone,.lamp-glow,.aura,.sensor-ring{animation:none}
+  .person{transform:translate(210px,0);opacity:1}
+  .floor-lit,.cone,.lamp-glow,.aura{opacity:1}
+  .sensor-ring{opacity:.8}
+}
+</style>
+</head>
+<body>
+<div class="hex" aria-hidden="true"></div>
+<div class="draft">預覽草稿，尚未放入官網。價格、影片、案例皆待補。</div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">BEEHOME ・ 智能家居</div>
+      <h1>半夜起床，<br>燈自己亮起來</h1>
+      <p class="sub">智能家居不是多幾個遙控器，是住進去以後，每天少摸幾次開關。進浴室不用伸手找燈，出門也能一鍵把燈光和窗簾收好。</p>
+      <div class="cta" style="margin-top:32px">
+        <a class="btn" href="https://www.beehome.live/appointment/預約流程" target="_top">預約體驗</a>
+        <a class="btn ghost" href="https://www.beehome.live/portfolio/裝修試算" target="_top">加入報價</a>
+      </div>
+      <p class="note">感應設備採用 Aqara，含 FP2 <span style="white-space:nowrap">存在感應器</span>。<br>配置依現場與使用習慣規劃。</p>
+    </div>
+    <figure class="stage">
+      <svg class="illu" viewBox="0 0 640 420" role="img" aria-labelledby="illuTitle illuDesc">
+        <title id="illuTitle">感應燈光示意動畫</title>
+        <desc id="illuDesc">人物走進走廊，存在感應啟動後，天花板燈逐漸亮起。</desc>
+        <defs>
+          <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f7f1e6"/>
+            <stop offset="1" stop-color="#ebe3d4"/>
+          </linearGradient>
+          <radialGradient id="glow" cx="50%" cy="30%" r="70%">
+            <stop offset="0" stop-color="#f3d58a" stop-opacity=".85"/>
+            <stop offset="1" stop-color="#f3d58a" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="coneG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffe9a8" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect width="640" height="420" fill="url(#wall)"/>
+        <!-- ceiling -->
+        <path d="M0 0h640v78L0 118z" fill="#e6dccb"/>
+        <path d="M0 118L640 78v8L0 126z" fill="#d8ccb6"/>
+        <!-- back wall line -->
+        <path d="M86 118 L86 292 L554 268 L554 96" fill="#f3ece0" stroke="#d9cfbb" stroke-width="1.2"/>
+        <!-- floor -->
+        <path d="M0 304 L86 292 L554 268 L640 278 V420 H0z" fill="#e0d5c3"/>
+        <path class="floor-lit" d="M0 304 L86 292 L554 268 L640 278 V420 H0z" fill="#f6e7b8" opacity=".55"/>
+        <!-- door -->
+        <rect x="118" y="148" width="70" height="148" rx="2" fill="#d7ccba" stroke="#b9ad96" stroke-width="1.5"/>
+        <rect x="126" y="156" width="54" height="132" fill="#c9bda8"/>
+        <circle cx="172" cy="224" r="3" fill="#8a7b62"/>
+        <!-- bathroom door hint -->
+        <rect x="470" y="150" width="52" height="122" rx="2" fill="#e8dfd0" stroke="#d0c4ae"/>
+        <!-- lamp -->
+        <g transform="translate(320,86)">
+          <rect x="-6" y="-10" width="12" height="16" fill="#8a847a"/>
+          <path d="M-28 6h56l-8 16h-40z" fill="#c4b89f"/>
+          <ellipse class="lamp-glow" cx="0" cy="24" rx="34" ry="10" fill="#ffe08a"/>
+        </g>
+        <polygon class="cone" points="292,112 348,112 500,300 140,320" fill="url(#coneG)"/>
+        <ellipse class="aura" cx="320" cy="200" rx="210" ry="130" fill="url(#glow)"/>
+        <!-- sensor on wall -->
+        <g transform="translate(100,160)">
+          <circle class="sensor-ring" cx="12" cy="8" r="18" fill="none" stroke="#b8862b" stroke-width="1.4" opacity=".5"/>
+          <rect x="0" y="0" width="24" height="16" rx="3" fill="#2b2925"/>
+          <circle cx="12" cy="8" r="3.2" fill="#d4a64a"/>
+        </g>
+        <g>
+          <rect x="20" y="18" width="148" height="28" rx="14" fill="#2b2925"/>
+          <text x="94" y="37" text-anchor="middle" fill="#faf8f4" font-size="12" letter-spacing="1.2" font-family="Noto Sans TC, sans-serif">存在感應　人來燈亮</text>
+        </g>
+        <!-- person -->
+        <g class="person" fill="#2b2925">
+          <circle cx="86" cy="214" r="11"/>
+          <path d="M78 228c2-8 14-8 16 0v46h-5l-2-22-3 22h-6z"/>
+          <path d="M78 274l-8 28h5l8-28z"/>
+          <path d="M89 274l7 28h5l-8-28z"/>
+          <path d="M76 236h-12l2 6 10-2z"/>
+        </g>
+        <!-- baseboard -->
+        <path d="M86 292 L554 268" stroke="#c8bba4" stroke-width="3"/>
+      </svg>
+      <figcaption>示意動畫　人走進，燈就亮　（非實景影片）</figcaption>
+    </figure>
+  </div>
+</header>
+
+<section class="sec" id="scenes">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" style="text-align:center;margin-bottom:10px">EVERYDAY SCENES</div>
+      <h2>住進去以後，每天都會用到</h2>
+      <div class="bar"></div>
+      <p class="sub">先看生活怎麼變方便，再決定要做到哪一步。<br>以下三個情境，是我們最常從裝修一起規劃的起點。</p>
+    </div>
+    <div class="scenes">
+      <article class="card">
+        <div class="media" aria-label="短影片位置，待補">
+          <div class="ph">
+            <div class="mark">短影片位置　待補</div>
+            <div>
+              <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="#c8b896" stroke-width="1.4"/><path d="M18 14l14 8-14 8z" fill="#b8862b"/></svg>
+            </div>
+            半夜起床，走廊燈微亮的 5 秒影片
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>半夜起床，燈自己亮</h3>
+          <p>走廊與走道只亮剛剛好的微光，不用摸黑找開關，也不會把客廳大燈一次打開。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media" aria-label="短影片位置，待補">
+          <div class="ph">
+            <div class="mark">短影片位置　待補</div>
+            <div>
+              <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="#c8b896" stroke-width="1.4"/><path d="M18 14l14 8-14 8z" fill="#b8862b"/></svg>
+            </div>
+            走進浴室、燈自動亮起的 5 秒影片
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>進浴室，不用摸開關</h3>
+          <p>存在感應知道你還在裡面，就算站著不動，燈也會一直亮著；離開之後再慢慢關上。</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media" aria-label="短影片位置，待補">
+          <div class="ph">
+            <div class="mark">短影片位置　待補</div>
+            <div>
+              <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="#c8b896" stroke-width="1.4"/><path d="M18 14l14 8-14 8z" fill="#b8862b"/></svg>
+            </div>
+            出門一鍵關閉燈光與窗簾的短影片
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>出門，一鍵全關</h3>
+          <p>燈光、窗簾一次收好。人已經出門，也能再確認家裡是關著的，不必來回檢查。</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="why" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" style="text-align:center;margin-bottom:10px">PLAN WITH THE RENOVATION</div>
+      <h2>為什麼要在裝修時一起做</h2>
+      <div class="bar"></div>
+      <p class="sub">跟只賣設備的廠商不同，我們把智能家居放進裝修一起想。<br>線路、開關、燈光迴路和窗簾盒，一次規劃好。</p>
+    </div>
+    <div class="why">
+      <article>
+        <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+          <rect x="6" y="8" width="36" height="32" rx="4" fill="none" stroke="#b8862b" stroke-width="1.8"/>
+          <path d="M6 16h36M18 8v8M30 8v8" stroke="#b8862b" stroke-width="1.8" fill="none"/>
+          <path d="M16 28h16M16 34h10" stroke="#2b2925" stroke-width="1.6"/>
+        </svg>
+        <h3>管線一次到位</h3>
+        <p>智能開關建議預留中性線，燈具迴路也要先分開。這些在拆改時一起做，比完工後再補管輕鬆許多。</p>
+      </article>
+      <article>
+        <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M8 34V18l16-10 16 10v16H8z" fill="none" stroke="#b8862b" stroke-width="1.8"/>
+          <path d="M18 34v-10h12v10" fill="none" stroke="#2b2925" stroke-width="1.6"/>
+        </svg>
+        <h3>不必事後拆天花</h3>
+        <p>網關、感應器電源、窗簾電機和隱藏走線，最好在封天花板前就定位。事後加裝，常常得拆開重做。</p>
+      </article>
+      <article>
+        <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="24" r="16" fill="none" stroke="#b8862b" stroke-width="1.8"/>
+          <path d="M24 12v12l8 5" stroke="#2b2925" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        </svg>
+        <h3>跟空間一起設計</h3>
+        <p>燈光要分哪幾路、窗簾盒要留多深、感應要放哪個角落，都可以跟室內設計一次確認，用起來才直覺。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="plans" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" style="text-align:center;margin-bottom:10px">START WHERE YOU NEED</div>
+      <h2>三種開始的方式</h2>
+      <div class="bar"></div>
+      <p class="sub">內容是常見做法的說明，實際項目會依坪數與現場調整。<br>價格先留空，確認方案後再報價。</p>
+    </div>
+    <div class="tiers">
+      <article class="tier">
+        <div class="tag">01　入門</div>
+        <h3>感應燈組</h3>
+        <p class="price"><em>價格洽詢</em></p>
+        <p class="price-sub">NT$ ___ 起（待填）</p>
+        <ul>
+          <li>中樞網關與基礎設定</li>
+          <li>重點區域存在感應（走道、浴室、廚房等，採用 <span style="white-space:nowrap">Aqara FP2</span>）</li>
+          <li>智能開關，與現有或新裝燈具聯動</li>
+          <li>人來燈亮、人走燈滅、夜間微亮等情境</li>
+        </ul>
+        <div class="cta">
+          <a class="btn" href="https://www.beehome.live/appointment/預約流程" target="_top">預約體驗</a>
+        </div>
+      </article>
+      <article class="tier featured">
+        <div class="tag">02　進階</div>
+        <h3>燈光＋窗簾</h3>
+        <p class="price"><em>價格洽詢</em></p>
+        <p class="price-sub">NT$ ___ 起（待填）</p>
+        <ul>
+          <li>包含入門感應燈組</li>
+          <li>客廳或臥室智能窗簾，含軌道與電機</li>
+          <li>更多房間的燈光情境</li>
+          <li>回家自動開、離家一鍵關</li>
+        </ul>
+        <div class="cta">
+          <a class="btn" href="https://www.beehome.live/appointment/預約流程" target="_top">預約體驗</a>
+        </div>
+      </article>
+      <article class="tier">
+        <div class="tag">03　全屋</div>
+        <h3>全屋智能</h3>
+        <p class="price"><em>價格洽詢</em></p>
+        <p class="price-sub">NT$ ___ 起（待填）</p>
+        <ul>
+          <li>包含燈光與窗簾方案</li>
+          <li>全室燈光、窗簾與感應位置一併規劃</li>
+          <li>可依需求擴充，例如冷氣聯動或基本安防</li>
+          <li>全屋情境設定，並說明日常怎麼用</li>
+        </ul>
+        <div class="cta">
+          <a class="btn" href="https://www.beehome.live/appointment/預約流程" target="_top">預約體驗</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="cases" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" style="text-align:center;margin-bottom:10px">REAL HOMES</div>
+      <h2>實際案例</h2>
+      <div class="bar"></div>
+      <p class="sub">這裡之後會放完工照片，以及住進去後真正用到的情境。<br>目前先留位置，不用沒有授權的照片。</p>
+    </div>
+    <div class="cases">
+      <article class="case">
+        <div class="media" aria-label="案例照片位置，待補">
+          <div class="ph">
+            <div class="mark">案例照片　待補</div>
+            <div>
+              <svg width="48" height="40" viewBox="0 0 48 40" aria-hidden="true"><rect x="1" y="5" width="46" height="34" rx="4" fill="none" stroke="#c8b896" stroke-width="1.4"/><circle cx="16" cy="18" r="5" fill="none" stroke="#c8b896" stroke-width="1.4"/><path d="M4 33l12-12 8 8 6-6 14 10" fill="none" stroke="#b8862b" stroke-width="1.6"/></svg>
+            </div>
+            走道／夜間微亮
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>案例名稱（待填）</h3>
+          <p>情境說明（待填）</p>
+        </div>
+      </article>
+      <article class="case">
+        <div class="media" aria-label="案例照片位置，待補">
+          <div class="ph">
+            <div class="mark">案例照片　待補</div>
+            <div>
+              <svg width="48" height="40" viewBox="0 0 48 40" aria-hidden="true"><rect x="1" y="5" width="46" height="34" rx="4" fill="none" stroke="#c8b896" stroke-width="1.4"/><circle cx="16" cy="18" r="5" fill="none" stroke="#c8b896" stroke-width="1.4"/><path d="M4 33l12-12 8 8 6-6 14 10" fill="none" stroke="#b8862b" stroke-width="1.6"/></svg>
+            </div>
+            浴室／廚房感應燈
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>案例名稱（待填）</h3>
+          <p>情境說明（待填）</p>
+        </div>
+      </article>
+      <article class="case">
+        <div class="media" aria-label="案例照片位置，待補">
+          <div class="ph">
+            <div class="mark">案例照片　待補</div>
+            <div>
+              <svg width="48" height="40" viewBox="0 0 48 40" aria-hidden="true"><rect x="1" y="5" width="46" height="34" rx="4" fill="none" stroke="#c8b896" stroke-width="1.4"/><circle cx="16" cy="18" r="5" fill="none" stroke="#c8b896" stroke-width="1.4"/><path d="M4 33l12-12 8 8 6-6 14 10" fill="none" stroke="#b8862b" stroke-width="1.6"/></svg>
+            </div>
+            客廳窗簾與一鍵情境
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>案例名稱（待填）</h3>
+          <p>情境說明（待填）</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <h2>先預約體驗，或加入裝修報價</h2>
+    <div class="bar"></div>
+    <p class="sub">可以先預約看實際怎麼用，或加進裝修試算。<br>內容與價格都依現場再確認。</p>
+    <div class="cta" style="justify-content:center">
+      <a class="btn" href="https://www.beehome.live/appointment/預約流程" target="_top">預約體驗</a>
+      <a class="btn ghost" href="https://www.beehome.live/portfolio/裝修試算" target="_top">加入報價</a>
+    </div>
+    <p class="links">或直接聯絡　<a href="tel:0980055523">0980-055-523</a>　·　<a href="https://lin.ee/wKeOphS" target="_top" rel="noopener">LINE</a>　·　<a href="mailto:iamglenn0630@gmail.com">Email</a></p>
+  </div>
+</section>
+</body>
+</html>

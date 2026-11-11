@@ -1,444 +1,670 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
-<title>蜂宅空間設計｜智能家居（預覽草稿）</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:#2b2925;background:#faf8f4;line-height:1.7}
-img,svg{max-width:100%;display:block}
-a{color:inherit}
-.draft{background:#2b2925;color:#e9e4da;font-size:12px;letter-spacing:.12em;text-align:center;padding:8px 16px}
-.draft b{color:#d4a64a;font-weight:500}
-.hex{position:fixed;inset:0;pointer-events:none;opacity:.07;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cpath d='M28 0l28 16v32L28 64 0 48V16zM28 64l28 16v32M28 64L0 80v32' fill='none' stroke='%23b8862b' stroke-width='1.2'/%3E%3C/svg%3E");-webkit-mask-image:linear-gradient(135deg,#000 10%,transparent 55%);mask-image:linear-gradient(135deg,#000 10%,transparent 55%)}
-.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 56px}
-.eyebrow{font-size:12px;letter-spacing:.35em;color:#b8862b}
-h1{font-size:46px;line-height:1.35;font-weight:500;letter-spacing:.06em;margin:16px 0 18px}
-h2{font-size:28px;font-weight:500;letter-spacing:.18em;text-align:center}
-.bar{width:44px;height:2px;background:#b8862b;margin:12px auto 18px}
-.lead,.sub{font-size:16px;line-height:1.9;color:#5d5850}
-h1,h2{text-wrap:balance}
-.sec{padding:88px 0}
-.sec-head{max-width:640px;margin:0 auto 48px;text-align:center}
-.sec-head .sub{margin-top:8px}
-.btn{display:inline-block;padding:12px 26px;border-radius:999px;background:#2b2925;color:#fff;text-decoration:none;font-size:14px;letter-spacing:.12em;transition:.25s;border:1px solid #2b2925;font-family:inherit;cursor:pointer}
-.btn:hover{background:#b8862b;border-color:#b8862b}
-.btn.ghost{background:transparent;color:#2b2925}
-.btn.ghost:hover{background:#2b2925;color:#fff}
-.cta{display:flex;flex-wrap:wrap;gap:12px}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#1a1814">
+  <title>蜂宅空間設計｜智能家居（預覽草稿）</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:#2b2925;
+      --dark:#1a1814;
+      --dark2:#2a2620;
+      --cream:#faf8f4;
+      --paper:#efeae2;
+      --white:#fff;
+      --muted:#6b655c;
+      --accent:#b8862b;
+      --accent-soft:#d4a64a;
+      --accent-light:#e8cf98;
+      --line:rgba(43,41,37,.14);
+      --radius:2px;
+      --max:1370px;
+      --draft:36px;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:123px}
+    body{margin:0;font-family:'Noto Sans TC','DM Sans',sans-serif;font-weight:400;color:var(--ink);background:var(--cream);overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    img{width:100%;height:auto;display:block}
+    [hidden]{display:none!important}
+    ::selection{background:var(--accent-light);color:var(--ink)}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 6.1%}
+    .overline{color:var(--accent);font-family:'DM Sans','Noto Sans TC',sans-serif;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+    .overline.light{color:var(--accent-light)}
+    .btn{display:inline-flex;justify-content:center;align-items:center;gap:28px;border:1px solid transparent;min-height:54px;padding:0 23px;font-size:12px;font-weight:700;letter-spacing:.045em;transition:background .25s,color .25s,transform .25s,border-color .25s;border-radius:var(--radius);white-space:nowrap}
+    .btn svg{width:16px;height:16px;flex:none}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-cream{color:var(--ink);background:#f7f5ef}
+    .btn-cream:hover{background:#e8dfd1}
+    .btn-outline-white{color:#fff;background:transparent;border-color:rgba(255,255,255,.65)}
+    .btn-outline-white:hover{background:rgba(255,255,255,.15)}
+    .btn-dark{color:#fff;background:var(--dark)}
+    .btn-dark:hover{background:#3a342c}
+    .btn-outline-dark{color:var(--ink);background:transparent;border-color:var(--ink)}
+    .btn-outline-dark:hover{background:var(--ink);color:#fff}
 
-/* hero */
-.hero{padding:56px 0 36px}
-.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
-.note{font-size:13px;color:#8a847a;margin-top:22px;line-height:1.8}
-.stage{background:#fff;border:1px solid #ece6da;border-radius:20px;padding:18px 18px 14px;box-shadow:0 12px 40px rgba(43,41,37,.05)}
-.stage figcaption{font-size:12px;letter-spacing:.2em;color:#8a847a;text-align:center;margin-top:10px}
+    .draft{position:fixed;top:0;left:0;right:0;z-index:80;height:var(--draft);display:flex;align-items:center;justify-content:center;background:var(--dark);color:#e9e4da;font-size:11px;letter-spacing:.12em;padding:0 16px;text-align:center}
+    .site-header{position:fixed;top:var(--draft);left:0;right:0;z-index:70;color:#fff;transition:background .3s,color .3s,box-shadow .3s}
+    .site-header.scrolled,.site-header.menu-open{color:var(--ink);background:rgba(250,248,244,.96);box-shadow:0 4px 24px rgba(0,0,0,.045);backdrop-filter:blur(16px)}
+    .nav{height:87px;display:flex;align-items:center;gap:32px}
+    .brand{display:flex;align-items:center;gap:12px;margin-right:auto;flex-shrink:0}
+    .brandmark{height:42px;width:42px;flex:none;display:grid;place-items:center}
+    .brandmark svg{width:26px;height:30px}
+    .brandname{display:flex;flex-direction:column;gap:1px}
+    .brandname strong{font-size:16px;font-weight:700;letter-spacing:.13em;line-height:1.1}
+    .brandname span{font-family:'DM Sans',sans-serif;font-size:9px;font-weight:500;letter-spacing:.25em;opacity:.72}
+    .navlinks{display:flex;align-items:center;gap:31px;margin-right:11px}
+    .navlinks a{font-size:12px;font-weight:600;letter-spacing:.07em;transition:opacity .2s}
+    .navlinks a:hover{opacity:.6}
+    .nav-cta{display:flex;align-items:center;justify-content:center;min-height:40px;padding:0 17px;border:1px solid currentColor;background:transparent;color:inherit;font-size:12px;letter-spacing:.04em;font-weight:600}
+    .nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+    .hamburger{display:none;border:0;background:transparent;color:inherit;padding:10px}
+    .hamburger svg{width:23px;height:23px}
 
-/* scene illustration */
-.illu{width:100%;height:auto;border-radius:14px;background:#efe8db;overflow:hidden}
-.floor-lit,.cone,.lamp-glow,.aura{opacity:0;animation:lighton 8s ease-in-out infinite}
-.sensor-ring{transform-origin:112px 168px;transform-box:fill-box;animation:pulse 8s ease-in-out infinite}
-.person{animation:walk 8s ease-in-out infinite}
-@keyframes walk{
-  0%{transform:translate(8px,0);opacity:0}
-  8%{opacity:1}
-  38%{transform:translate(210px,0);opacity:1}
-  78%{transform:translate(355px,0);opacity:1}
-  90%{opacity:0}
-  100%{transform:translate(355px,0);opacity:0}
-}
-@keyframes lighton{
-  0%,16%{opacity:0}
-  28%,80%{opacity:1}
-  92%,100%{opacity:0}
-}
-@keyframes pulse{
-  0%,16%{opacity:.2}
-  28%,80%{opacity:.9}
-  92%,100%{opacity:.2}
-}
+    .hero{min-height:780px;height:min(920px,100svh);position:relative;display:flex;align-items:center;color:#fff;background:#27241f;isolation:isolate}
+    .hero-photo{position:absolute;inset:0;z-index:-2;background-image:linear-gradient(90deg,rgba(18,16,12,.78) 0%,rgba(18,16,12,.46) 46%,rgba(18,16,12,.12) 100%),url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=85');background-size:cover;background-position:center 52%}
+    .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.28),transparent 23%,transparent 66%,rgba(12,10,8,.32))}
+    .hero-copy{padding-top:124px;position:relative;z-index:2}
+    .hero .overline{display:flex;align-items:center;gap:16px;margin-bottom:26px}
+    .hero .overline::before{content:"";display:block;width:30px;height:1px;background:var(--accent-soft)}
+    .hero h1{margin:0 0 28px;font-size:clamp(44px,5.8vw,86px);font-weight:400;letter-spacing:-.04em;line-height:1.35}
+    .hero h1 em{color:var(--accent-light);font-weight:300;font-style:normal}
+    .hero-text{max-width:470px;color:rgba(255,255,255,.79);font-size:15px;line-height:2.05;font-weight:300;letter-spacing:.05em}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:36px}
+    .hero-bottom{position:absolute;bottom:42px;left:0;right:0;display:flex;align-items:flex-end;justify-content:space-between;gap:22px}
+    .scroll-indicator{display:flex;align-items:center;gap:13px;color:rgba(255,255,255,.8);font-size:10px;letter-spacing:.23em;font-weight:600;font-family:'DM Sans',sans-serif}
+    .scroll-indicator .bar{width:46px;height:1px;background:rgba(255,255,255,.6)}
+    .hero-index{color:rgba(255,255,255,.72);font-size:12px;letter-spacing:.18em;font-family:'DM Sans',sans-serif}
+    .hero-float{position:absolute;right:6.1%;bottom:142px;z-index:4;background:rgba(250,248,244,.88);color:var(--ink);padding:19px 22px 18px;min-width:249px;backdrop-filter:blur(22px);box-shadow:0 14px 40px rgba(0,0,0,.1);border:1px solid rgba(255,255,255,.6)}
+    .float-top{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--muted);font-size:10px;letter-spacing:.13em;font-family:'DM Sans',sans-serif}
+    .float-top .dot{width:7px;height:7px;border-radius:50%;background:var(--accent-soft);box-shadow:0 0 0 5px rgba(184,134,43,.18)}
+    .float-title{font-size:19px;font-weight:600;margin:15px 0 17px;letter-spacing:.04em}
+    .float-status{display:flex;gap:9px;flex-wrap:wrap}
+    .float-status span{border:1px solid rgba(43,41,37,.13);background:rgba(255,255,255,.3);font-size:10px;padding:6px 10px;color:var(--muted)}
 
-/* scenes */
-.scenes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.card{background:#fff;border:1px solid #ece6da;border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
-.media{position:relative;aspect-ratio:16/10;background:linear-gradient(180deg,#f3eee4,#e8dfd0);display:flex;align-items:center;justify-content:center}
-.ph{text-align:center;color:#8a847a;font-size:13px;letter-spacing:.08em;line-height:1.7;padding:16px}
-.ph .mark{display:inline-block;font-size:11px;letter-spacing:.16em;border:1px dashed #c8b896;color:#b8862b;border-radius:999px;padding:3px 10px;margin-bottom:8px}
-.card-body{padding:22px 22px 24px}
-.card-body h3{font-size:20px;font-weight:500;letter-spacing:.06em;margin-bottom:8px;line-height:1.45}
-.card-body p{font-size:14px;color:#5d5850;line-height:1.85}
+    .manifesto{padding:135px 0 122px;background:var(--cream)}
+    .manifesto-inner{display:grid;grid-template-columns:.8fr 1.2fr;gap:9%}
+    .section-count{font-size:10px;color:#a39c92;letter-spacing:.22em;margin-top:17px;font-family:'DM Sans',sans-serif}
+    .manifesto h2,.section-heading h2,.smart-copy h2,.method-head h2,.cta h2,.benefit-head h2,.faq h2{font-size:clamp(34px,3.65vw,57px);line-height:1.48;font-weight:400;letter-spacing:-.04em;margin:15px 0 22px}
+    .manifesto h2 span{color:#9a948b}
+    .manifesto p{font-size:14px;line-height:2.15;color:var(--muted);max-width:620px}
+    .principles{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:40px;padding-top:31px;gap:20px}
+    .principle strong{display:block;font-size:14px;font-weight:600;margin-bottom:9px}
+    .principle span{display:block;font-size:12px;line-height:1.85;color:var(--muted)}
 
-/* why */
-.why{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.why article{background:#fff;border:1px solid #ece6da;border-radius:18px;padding:28px 24px}
-.icon{width:48px;height:48px;margin-bottom:16px}
-.why h3{font-size:18px;font-weight:500;letter-spacing:.08em;margin-bottom:10px}
-.why p{font-size:14px;color:#5d5850;line-height:1.85}
+    .services{padding:100px 0 129px;background:var(--paper)}
+    .section-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:34px;margin-bottom:49px}
+    .section-heading h2{margin-bottom:0}
+    .section-heading .intro{color:var(--muted);font-size:13px;max-width:340px;line-height:2;margin-bottom:11px}
+    .service-grid{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:13px}
+    .service-card{position:relative;overflow:hidden;min-height:515px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;isolation:isolate;padding:33px}
+    .service-card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(18,16,12,.86),transparent 65%)}
+    .service-card .card-bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;transition:transform .7s}
+    .service-card:hover .card-bg{transform:scale(1.055)}
+    .service-card:nth-child(1) .card-bg{background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=83')}
+    .service-card:nth-child(2) .card-bg{background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=83')}
+    .service-card:nth-child(3) .card-bg{background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=83')}
+    .service-index{position:absolute;top:29px;left:32px;color:#fff;opacity:.82;font-size:12px;letter-spacing:.17em;font-family:'DM Sans',sans-serif}
+    .service-card h3{font-weight:500;font-size:25px;line-height:1.55;letter-spacing:-.02em;margin:0 0 8px}
+    .service-card .card-price{font-size:13px;margin:0 0 10px;color:var(--accent-light);letter-spacing:.06em}
+    .service-card .card-price small{display:block;margin-top:3px;color:rgba(255,255,255,.88);font-size:11px;letter-spacing:.06em;white-space:nowrap}
+    .service-card p{font-size:12px;line-height:1.9;margin:0;color:rgba(255,255,255,.78)}
+    .service-card .card-arrow{margin-top:24px;display:flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.1em}
 
-/* tiers */
-.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
-.tier{background:#fff;border:1px solid #ece6da;border-radius:18px;padding:28px 24px 24px;display:flex;flex-direction:column}
-.tier.featured{border-color:#d4a64a;box-shadow:0 10px 32px rgba(184,134,43,.12)}
-.tier .tag{font-size:11px;letter-spacing:.2em;color:#b8862b;margin-bottom:8px}
-.tier h3{font-size:22px;font-weight:500;letter-spacing:.08em;margin-bottom:6px}
-.price{font-size:18px;font-weight:500;margin:8px 0 6px}
-.price em{font-style:normal;color:#b8862b}
-.price-sub{font-size:12px;color:#8a847a;letter-spacing:.06em;margin-bottom:16px}
-.tier ul{list-style:none;font-size:14px;color:#5d5850;line-height:1.9;margin-bottom:22px;flex:1}
-.tier li{padding-left:18px;position:relative}
-.tier li::before{content:"";position:absolute;left:0;top:.7em;width:7px;height:7px;border-radius:50%;background:#b8862b}
+    .smart-section{background:var(--dark);color:#fff;overflow:hidden}
+    .smart-layout{display:grid;grid-template-columns:.82fr 1.18fr;min-height:750px}
+    .smart-copy{padding:110px 10% 85px max(9%,calc((100vw - 1200px)/2));align-self:center}
+    .smart-copy h2{font-size:clamp(34px,3.5vw,54px);margin-top:22px;margin-bottom:24px}
+    .smart-copy p{max-width:390px;color:rgba(255,255,255,.67);line-height:2.1;font-size:13px}
+    .scene-tabs{display:grid;grid-template-columns:1fr 1fr;gap:11px;max-width:390px;margin:36px 0 27px}
+    .scene-tab{color:#eee9e0;background:transparent;text-align:left;border:1px solid rgba(255,255,255,.22);padding:16px 17px;font-size:13px;display:flex;justify-content:space-between;gap:5px;transition:background .25s,color .25s,border .25s}
+    .scene-tab span{opacity:.65;font-size:11px;font-family:'DM Sans',sans-serif}
+    .scene-tab:hover{border-color:#d4cbb8}
+    .scene-tab.active{background:#f4efe6;color:var(--ink);border-color:#f4efe6}
+    .scene-desc{font-size:12px;line-height:1.9;color:#d4cfc4;border-left:1px solid var(--accent-soft);padding-left:15px;max-width:360px;min-height:46px}
+    .smart-photo{position:relative;background:#2a2620;min-height:680px;isolation:isolate}
+    .smart-photo::before{content:"";position:absolute;inset:0;z-index:-2;background-image:url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1450&q=85');background-size:cover;background-position:center;filter:var(--scene-filter,brightness(.93)) saturate(.8);transition:filter .8s}
+    .smart-photo::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(26,24,20,.25),transparent 55%),rgba(18,16,12,var(--scene-tint,.07));transition:background .6s}
+    .scene-hint{position:absolute;left:34px;top:41px;display:flex;align-items:center;gap:9px;font-size:10px;color:#fff;text-shadow:0 1px 6px #111;letter-spacing:.17em;font-family:'DM Sans',sans-serif}
+    .scene-hint .indicator{width:8px;height:8px;background:var(--accent-light);border:2px solid rgba(255,255,255,.6);border-radius:50%}
+    .photo-note{position:absolute;left:34px;top:68px;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.8);text-shadow:0 1px 6px #111;background:rgba(26,24,20,.4);padding:4px 9px;border:1px dashed rgba(255,255,255,.35)}
+    .control-panel{position:absolute;right:34px;bottom:38px;width:min(380px,calc(100% - 68px));padding:24px 24px 20px;background:rgba(250,248,244,.91);color:var(--ink);backdrop-filter:blur(24px);box-shadow:0 25px 65px rgba(12,10,8,.18);border:1px solid rgba(255,255,255,.8)}
+    .panel-header{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(43,41,37,.12);padding-bottom:17px}
+    .panel-header strong{font-size:15px;font-weight:700}
+    .panel-header small{color:var(--muted);font-size:10px;letter-spacing:.08em;font-family:'DM Sans',sans-serif}
+    .panel-rows{padding-top:13px}
+    .panel-row{display:flex;align-items:center;gap:12px;padding:10px 0}
+    .panel-icon{width:31px;height:31px;display:grid;place-items:center;border-radius:50%;background:#efe8db}
+    .panel-icon svg{width:17px;height:17px}
+    .panel-label{flex:1;font-size:12px}
+    .panel-value{font-size:12px;font-weight:700}
+    .panel-footer{color:var(--muted);font-size:10px;letter-spacing:.04em;margin-top:7px;line-height:1.7}
 
-/* cases */
-.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.case{background:#fff;border:1px dashed #d9cfbb;border-radius:18px;overflow:hidden}
-.case .media{aspect-ratio:4/3;background:#f3eee4}
-.case .card-body{padding:18px 20px 22px}
-.case h3{font-size:16px;font-weight:500;letter-spacing:.12em;margin-bottom:6px}
+    .benefits{padding:130px 0 120px;background:#faf9f6}
+    .benefit-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:12%;align-items:end;margin-bottom:53px}
+    .benefit-head h2{font-size:clamp(31px,3.5vw,53px);font-weight:400;line-height:1.55;letter-spacing:-.04em;margin:15px 0 0}
+    .benefit-head p{font-size:13px;line-height:2.05;color:var(--muted);max-width:440px;margin:0 0 7px}
+    .benefit-list{border-top:1px solid var(--line)}
+    .benefit-item{display:grid;grid-template-columns:75px 1fr 1.45fr 30px;align-items:center;gap:24px;min-height:119px;border-bottom:1px solid var(--line)}
+    .benefit-symbol{font-size:11px;letter-spacing:.12em;color:var(--accent);font-family:'DM Sans',sans-serif}
+    .benefit-item h3{font-size:21px;font-weight:500;margin:0}
+    .benefit-item p{color:var(--muted);font-size:13px;line-height:1.9;margin:0}
+    .benefit-item .arrow-circle{width:27px;height:27px;display:grid;place-items:center;border:1px solid rgba(43,41,37,.22);border-radius:50%;color:var(--muted);font-size:13px}
+    .partner-note{margin-top:35px;display:flex;justify-content:space-between;flex-wrap:wrap;align-items:center;gap:20px;font-size:12px;color:var(--muted)}
 
-/* close */
-.close{background:#2b2925;color:#e9e4da;padding:72px 0 56px;margin-top:24px}
-.close .wrap{text-align:center}
-.close h2{color:#faf8f4;letter-spacing:.18em}
-.close .bar{background:#d4a64a}
-.close .sub{color:#cfc8bb;max-width:560px;margin:0 auto 28px}
-.close .btn{background:#d4a64a;border-color:#d4a64a;color:#2b2925}
-.close .btn:hover{background:#e8cf98;border-color:#e8cf98}
-.close .btn.ghost{background:transparent;color:#faf8f4;border-color:#faf8f4}
-.close .btn.ghost:hover{background:#faf8f4;color:#2b2925}
-.close .links{margin-top:22px;font-size:13px;color:#a59f94;letter-spacing:.04em}
-.close .links a{color:#e9e4da;text-decoration:none;border-bottom:1px solid #6a655c}
-.close .links a:hover{color:#d4a64a;border-color:#d4a64a}
+    .portfolio{padding:100px 0 128px;background:var(--paper)}
+    .filters{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 28px}
+    .filter-btn{border:1px solid rgba(43,41,37,.18);color:var(--muted);padding:10px 21px;font-size:12px;background:transparent;transition:all .2s}
+    .filter-btn.active,.filter-btn:hover{background:var(--dark);border-color:var(--dark);color:#fff}
+    .project-grid{display:grid;grid-template-columns:1.05fr 1fr 1fr;gap:21px}
+    .project-card{min-width:0}
+    .project-photo{height:345px;position:relative;overflow:hidden;background:#d8d2c8}
+    .project-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+    .project-card:hover img{transform:scale(1.055)}
+    .project-photo span{position:absolute;top:18px;left:19px;background:rgba(250,248,244,.91);color:var(--muted);padding:8px 11px;font-size:10px;font-weight:600;letter-spacing:.06em}
+    .project-info{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;padding-top:22px}
+    .project-info h3{font-weight:600;font-size:19px;margin:0 0 10px}
+    .project-info p{color:var(--muted);margin:0;font-size:12px;line-height:1.8}
+    .project-info svg{width:21px;height:21px;flex:none}
+    .portfolio-disclaimer{margin:29px 0 0;color:#8a847a;font-size:11px;line-height:1.8}
 
-@media(max-width:900px){
-  .wrap{padding:0 20px}
-  h1{font-size:30px}
-  h2{font-size:24px;letter-spacing:.12em}
-  .hero{padding:32px 0 12px}
-  .hero-grid,.scenes,.why,.tiers,.cases{grid-template-columns:1fr;gap:16px}
-  .sec{padding:56px 0}
-  .sec-head{margin-bottom:28px}
-  .cta .btn{width:100%;text-align:center}
-}
-@media(prefers-reduced-motion:reduce){
-  .person,.floor-lit,.cone,.lamp-glow,.aura,.sensor-ring{animation:none}
-  .person{transform:translate(210px,0);opacity:1}
-  .floor-lit,.cone,.lamp-glow,.aura{opacity:1}
-  .sensor-ring{opacity:.8}
-}
-</style>
+    .method{padding:120px 0 128px;background:var(--cream)}
+    .method-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:66px}
+    .method-head p{max-width:330px;font-size:13px;color:var(--muted);line-height:2}
+    .method-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:45px}
+    .step{border-top:1px solid #c8bfb0;padding-top:25px}
+    .step-index{color:var(--accent);font-size:13px;letter-spacing:.16em;font-family:'DM Sans',sans-serif}
+    .step h3{font-size:21px;margin:33px 0 14px;font-weight:500}
+    .step p{font-size:13px;line-height:2.1;color:var(--muted);margin:0}
+
+    .cta{position:relative;isolation:isolate;background:var(--dark);color:#fff;padding:125px 0 129px}
+    .cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(18,16,12,.91),rgba(18,16,12,.78)),url('https://images.unsplash.com/photo-1600566753051-f0b89df2dd90?auto=format&fit=crop&w=1800&q=81') center/cover}
+    .cta-inner{display:flex;justify-content:space-between;align-items:center;gap:60px}
+    .cta h2{margin:18px 0 21px;font-size:clamp(36px,4.2vw,64px)}
+    .cta h2 em{color:var(--accent-light);font-style:normal}
+    .cta p{color:rgba(255,255,255,.67);font-size:13px;line-height:2;max-width:490px}
+    .cta-actions{display:flex;flex-wrap:wrap;gap:12px;flex:none}
+
+    .faq{padding:105px 0 110px;background:var(--cream)}
+    .faq-inner{display:grid;grid-template-columns:.77fr 1.23fr;gap:10%}
+    .faq h2{font-weight:400;font-size:38px;letter-spacing:-.04em;margin:13px 0}
+    details{border-bottom:1px solid #d8d2c8}
+    details:first-child{border-top:1px solid #d8d2c8}
+    summary{cursor:pointer;padding:25px 2px;display:flex;align-items:center;justify-content:space-between;list-style:none;font-size:14px;font-weight:600;gap:20px}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:'+';color:var(--muted);font-size:23px;line-height:1;font-weight:300}
+    details[open] summary::after{content:'−'}
+    details p{font-size:13px;color:var(--muted);line-height:2.15;margin:0 24px 24px 2px}
+
+    footer{background:#141210;color:#e9e4da;padding:70px 0 31px}
+    .foot-grid{display:grid;grid-template-columns:1.5fr .8fr .8fr;gap:50px;margin-bottom:70px}
+    footer .brand{margin-bottom:25px;margin-right:0}
+    .foot-about{font-size:12px;color:#a59f94;max-width:320px;line-height:2.1}
+    .foot-label{color:#a59f94;font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:24px;font-family:'DM Sans',sans-serif}
+    .foot-links{display:flex;flex-direction:column;gap:15px}
+    .foot-links a,.foot-links span{font-size:12px;color:#e9e4da}
+    .foot-links a:hover{color:var(--accent-soft)}
+    .foot-bottom{padding-top:25px;border-top:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between;gap:20px;font-size:10px;color:#8a847a;line-height:1.8}
+
+    .only-m{display:none}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    @media (max-width:1100px){
+      .navlinks{gap:16px}
+      .nav{gap:16px}
+      .hero-float{right:5%}
+      .smart-layout{grid-template-columns:.92fr 1.08fr}
+      .smart-copy{padding-left:9%;padding-right:8%}
+      .service-card{padding:23px}
+      .project-photo{height:290px}
+    }
+    @media (max-width:820px){
+      .wrap{padding-left:6%;padding-right:6%}
+      .nav{height:75px}
+      html{scroll-padding-top:111px}
+      .hamburger{display:grid;place-items:center;margin-left:auto}
+      .navlinks{display:none;position:absolute;left:0;right:0;top:calc(var(--draft) + 75px);padding:26px 6% 35px;background:var(--cream);color:var(--ink);border-top:1px solid rgba(43,41,37,.1);box-shadow:0 20px 40px rgba(0,0,0,.12);flex-direction:column;align-items:flex-start;gap:25px}
+      .site-header.menu-open .navlinks{display:flex}
+      .navlinks a{font-size:15px}
+      .hero{min-height:710px;max-height:none;height:100svh}
+      .hero h1{font-size:clamp(40px,7.4vw,68px)}
+      .hero-float{right:6%;bottom:100px;transform:scale(.88);transform-origin:bottom right}
+      .manifesto{padding:100px 0}
+      .manifesto-inner,.benefit-head,.faq-inner{grid-template-columns:1fr;gap:20px}
+      .section-count{display:none}
+      .services,.benefits,.portfolio,.method{padding-top:85px;padding-bottom:90px}
+      .service-grid{grid-template-columns:1fr 1fr}
+      .service-card{min-height:405px}
+      .service-card:first-child{grid-column:1/-1;min-height:400px}
+      .smart-layout{grid-template-columns:1fr}
+      .smart-copy{padding:85px 6% 74px}
+      .smart-copy p,.scene-tabs{max-width:550px}
+      .scene-tabs{grid-template-columns:repeat(4,1fr)}
+      .scene-tab{padding:14px 9px;justify-content:center}
+      .scene-tab span{display:none}
+      .smart-photo{min-height:570px}
+      .project-grid{grid-template-columns:repeat(2,1fr)}
+      .project-photo{height:315px}
+      .benefit-item{grid-template-columns:45px 1fr 1.5fr 25px;gap:16px}
+      .method-steps{gap:24px}
+      .cta-inner{flex-direction:column;align-items:flex-start;gap:26px}
+    }
+    @media (max-width:600px){
+      .draft{font-size:10px;letter-spacing:.06em}
+      .brandmark{height:38px;width:38px}
+      .brandname strong{font-size:14px}
+      .brandname span{font-size:8px}
+      .nav-cta{font-size:11px;padding:0 10px;min-height:35px}
+      .hero{min-height:670px;height:100svh}
+      .hero-photo{background-position:59% center;background-image:linear-gradient(90deg,rgba(18,16,12,.76),rgba(18,16,12,.28)),url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80')}
+      .hero-copy{padding-top:36px}
+      .hero h1{font-size:clamp(40px,10.5vw,58px);line-height:1.45}
+      .hero-text{font-size:13px;max-width:325px}
+      .hero-actions{margin-top:26px}
+      .btn{padding:0 16px;gap:11px;min-height:48px;font-size:11px}
+      .hero-float{display:none}
+      .hero-bottom{bottom:26px}
+      .manifesto{padding:78px 0}
+      .manifesto h2,.section-heading h2,.smart-copy h2,.method-head h2,.benefit-head h2{font-size:30px}
+      .only-m{display:block}
+      .cta h2{font-size:36px}
+      .principles{grid-template-columns:1fr;gap:18px}
+      .section-heading{flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:31px}
+      .section-heading .intro{margin:0}
+      .service-grid{grid-template-columns:1fr}
+      .service-card,.service-card:first-child{grid-column:auto;min-height:380px}
+      .smart-copy{padding-top:75px;padding-bottom:65px}
+      .scene-tabs{gap:7px}
+      .scene-tab{font-size:11px;padding:14px 3px}
+      .smart-photo{min-height:535px}
+      .control-panel{right:17px;bottom:17px;padding:17px;width:calc(100% - 34px)}
+      .scene-hint,.photo-note{left:17px}
+      .scene-hint{top:25px}
+      .photo-note{top:52px}
+      .benefit-head{gap:14px;margin-bottom:32px}
+      .benefit-item{grid-template-columns:35px 1fr 28px;gap:13px;padding:23px 0;align-items:start}
+      .benefit-item h3{font-size:18px}
+      .benefit-item .arrow-circle{grid-column:3;grid-row:1}
+      .benefit-item p{grid-column:2/-1;grid-row:2;font-size:12px;margin-top:0}
+      .benefit-symbol{padding-top:5px}
+      .project-grid{grid-template-columns:1fr;gap:33px}
+      .project-photo{height:340px}
+      .method-head{flex-direction:column;align-items:start;gap:8px;margin-bottom:36px}
+      .method-steps{grid-template-columns:1fr;gap:36px}
+      .step h3{margin:18px 0 9px}
+      .cta{padding:82px 0 90px}
+      .cta h2{font-size:36px}
+      .cta-actions{width:100%}
+      .cta-actions .btn{flex:1}
+      .faq{padding:76px 0 82px}
+      .faq h2{font-size:35px}
+      footer{padding:60px 0 25px}
+      .foot-grid{grid-template-columns:1fr 1fr;gap:32px;margin-bottom:50px}
+      .foot-grid>:first-child{grid-column:1/-1}
+      .foot-bottom{flex-direction:column;gap:3px}
+    }
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .reveal{opacity:1;transform:none}
+      *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+    }
+  </style>
 </head>
 <body>
-<div class="hex" aria-hidden="true"></div>
-<div class="draft">預覽草稿，尚未放入官網。價格、影片、案例皆待補。</div>
+  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="hex" viewBox="0 0 24 28"><path d="M12 1l11 6.5v13L12 27 1 20.5v-13z" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="sensor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.2" fill="currentColor"/><circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".55"/></symbol>
+    <symbol id="curtain" viewBox="0 0 24 24"><path d="M3 4h18M5 4v16h14V4M12 4c0 8-2 10-7 12m7-12c0 8 2 10 7 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="away" viewBox="0 0 24 24"><path d="M4 11.5 12 5l8 6.5V20H4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M10 20v-6h4v6" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  </svg>
 
-<header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow">BEEHOME ・ 智能家居</div>
-      <h1>半夜起床，<br>燈自己亮起來</h1>
-      <p class="sub">智能家居不是多幾個遙控器，是住進去以後，每天少摸幾次開關。進浴室不用伸手找燈，出門也能一鍵把燈光和窗簾收好。</p>
-      <div class="cta" style="margin-top:32px">
-        <a class="btn" href="https://www.beehome.live/appointment/預約流程" target="_top">預約體驗</a>
-        <a class="btn ghost" href="https://www.beehome.live/portfolio/裝修試算" target="_top">加入報價</a>
+  <div class="draft">預覽草稿，尚未放入官網。價格、影片、案例皆待補。</div>
+
+  <header class="site-header" id="header">
+    <nav class="nav wrap" aria-label="主要選單">
+      <a class="brand" href="#top" aria-label="蜂宅空間設計">
+        <span class="brandmark"><svg><use href="#hex"/></svg></span>
+        <span class="brandname"><strong>蜂宅空間設計</strong><span>BEEHOME</span></span>
+      </a>
+      <div class="navlinks" id="navlinks">
+        <a href="#why">為什麼現在做</a>
+        <a href="#plans">方案</a>
+        <a href="#scenes">生活情境</a>
+        <a href="#cases">案例</a>
+        <a href="#faq">常見問題</a>
       </div>
-      <p class="note">感應設備採用 Aqara，含 FP2 <span style="white-space:nowrap">存在感應器</span>。<br>配置依現場與使用習慣規劃。</p>
-    </div>
-    <figure class="stage">
-      <svg class="illu" viewBox="0 0 640 420" role="img" aria-labelledby="illuTitle illuDesc">
-        <title id="illuTitle">感應燈光示意動畫</title>
-        <desc id="illuDesc">人物走進走廊，存在感應啟動後，天花板燈逐漸亮起。</desc>
-        <defs>
-          <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#f7f1e6"/>
-            <stop offset="1" stop-color="#ebe3d4"/>
-          </linearGradient>
-          <radialGradient id="glow" cx="50%" cy="30%" r="70%">
-            <stop offset="0" stop-color="#f3d58a" stop-opacity=".85"/>
-            <stop offset="1" stop-color="#f3d58a" stop-opacity="0"/>
-          </radialGradient>
-          <linearGradient id="coneG" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#ffe9a8" stop-opacity=".55"/>
-            <stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <rect width="640" height="420" fill="url(#wall)"/>
-        <!-- ceiling -->
-        <path d="M0 0h640v78L0 118z" fill="#e6dccb"/>
-        <path d="M0 118L640 78v8L0 126z" fill="#d8ccb6"/>
-        <!-- back wall line -->
-        <path d="M86 118 L86 292 L554 268 L554 96" fill="#f3ece0" stroke="#d9cfbb" stroke-width="1.2"/>
-        <!-- floor -->
-        <path d="M0 304 L86 292 L554 268 L640 278 V420 H0z" fill="#e0d5c3"/>
-        <path class="floor-lit" d="M0 304 L86 292 L554 268 L640 278 V420 H0z" fill="#f6e7b8" opacity=".55"/>
-        <!-- door -->
-        <rect x="118" y="148" width="70" height="148" rx="2" fill="#d7ccba" stroke="#b9ad96" stroke-width="1.5"/>
-        <rect x="126" y="156" width="54" height="132" fill="#c9bda8"/>
-        <circle cx="172" cy="224" r="3" fill="#8a7b62"/>
-        <!-- bathroom door hint -->
-        <rect x="470" y="150" width="52" height="122" rx="2" fill="#e8dfd0" stroke="#d0c4ae"/>
-        <!-- lamp -->
-        <g transform="translate(320,86)">
-          <rect x="-6" y="-10" width="12" height="16" fill="#8a847a"/>
-          <path d="M-28 6h56l-8 16h-40z" fill="#c4b89f"/>
-          <ellipse class="lamp-glow" cx="0" cy="24" rx="34" ry="10" fill="#ffe08a"/>
-        </g>
-        <polygon class="cone" points="292,112 348,112 500,300 140,320" fill="url(#coneG)"/>
-        <ellipse class="aura" cx="320" cy="200" rx="210" ry="130" fill="url(#glow)"/>
-        <!-- sensor on wall -->
-        <g transform="translate(100,160)">
-          <circle class="sensor-ring" cx="12" cy="8" r="18" fill="none" stroke="#b8862b" stroke-width="1.4" opacity=".5"/>
-          <rect x="0" y="0" width="24" height="16" rx="3" fill="#2b2925"/>
-          <circle cx="12" cy="8" r="3.2" fill="#d4a64a"/>
-        </g>
-        <g>
-          <rect x="20" y="18" width="148" height="28" rx="14" fill="#2b2925"/>
-          <text x="94" y="37" text-anchor="middle" fill="#faf8f4" font-size="12" letter-spacing="1.2" font-family="Noto Sans TC, sans-serif">存在感應　人來燈亮</text>
-        </g>
-        <!-- person -->
-        <g class="person" fill="#2b2925">
-          <circle cx="86" cy="214" r="11"/>
-          <path d="M78 228c2-8 14-8 16 0v46h-5l-2-22-3 22h-6z"/>
-          <path d="M78 274l-8 28h5l8-28z"/>
-          <path d="M89 274l7 28h5l-8-28z"/>
-          <path d="M76 236h-12l2 6 10-2z"/>
-        </g>
-        <!-- baseboard -->
-        <path d="M86 292 L554 268" stroke="#c8bba4" stroke-width="3"/>
-      </svg>
-      <figcaption>示意動畫　人走進，燈就亮　（非實景影片）</figcaption>
-    </figure>
-  </div>
-</header>
+      <a class="nav-cta" href="https://www.beehome.live/appointment/預約流程" target="_top">預約體驗</a>
+      <button class="hamburger" id="menuToggle" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="navlinks">
+        <svg id="menuIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      </button>
+    </nav>
+  </header>
 
-<section class="sec" id="scenes">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow" style="text-align:center;margin-bottom:10px">EVERYDAY SCENES</div>
-      <h2>住進去以後，每天都會用到</h2>
-      <div class="bar"></div>
-      <p class="sub">先看生活怎麼變方便，再決定要做到哪一步。<br>以下三個情境，是我們最常從裝修一起規劃的起點。</p>
-    </div>
-    <div class="scenes">
-      <article class="card">
-        <div class="media" aria-label="短影片位置，待補">
-          <div class="ph">
-            <div class="mark">短影片位置　待補</div>
-            <div>
-              <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="#c8b896" stroke-width="1.4"/><path d="M18 14l14 8-14 8z" fill="#b8862b"/></svg>
-            </div>
-            半夜起床，走廊燈微亮的 5 秒影片
-          </div>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-photo" role="img" aria-label="溫潤現代住宅室內氛圍圖，示意用，待換成蜂宅實景"></div>
+      <div class="wrap hero-copy">
+        <div class="overline light">BEEHOME · SMART LIVING</div>
+        <h1 id="hero-title">半夜起床，<br>燈會<em>自己亮起來</em>。</h1>
+        <p class="hero-text">智能家居不是多幾個遙控器，是住進去以後，每天少摸幾次開關。進浴室不用伸手找燈，出門也能一鍵把燈光和窗簾收好。</p>
+        <div class="hero-actions">
+          <a class="btn btn-cream" href="https://www.beehome.live/appointment/預約流程" target="_top">預約體驗 <svg><use href="#arrow"/></svg></a>
+          <a class="btn btn-outline-white" href="https://www.beehome.live/portfolio/裝修試算" target="_top">加入報價 <svg><use href="#arrow"/></svg></a>
         </div>
-        <div class="card-body">
-          <h3>半夜起床，燈自己亮</h3>
-          <p>走廊與走道只亮剛剛好的微光，不用摸黑找開關，也不會把客廳大燈一次打開。</p>
-        </div>
-      </article>
-      <article class="card">
-        <div class="media" aria-label="短影片位置，待補">
-          <div class="ph">
-            <div class="mark">短影片位置　待補</div>
-            <div>
-              <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="#c8b896" stroke-width="1.4"/><path d="M18 14l14 8-14 8z" fill="#b8862b"/></svg>
-            </div>
-            走進浴室、燈自動亮起的 5 秒影片
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>進浴室，不用摸開關</h3>
-          <p>存在感應知道你還在裡面，就算站著不動，燈也會一直亮著；離開之後再慢慢關上。</p>
-        </div>
-      </article>
-      <article class="card">
-        <div class="media" aria-label="短影片位置，待補">
-          <div class="ph">
-            <div class="mark">短影片位置　待補</div>
-            <div>
-              <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="#c8b896" stroke-width="1.4"/><path d="M18 14l14 8-14 8z" fill="#b8862b"/></svg>
-            </div>
-            出門一鍵關閉燈光與窗簾的短影片
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>出門，一鍵全關</h3>
-          <p>燈光、窗簾一次收好。人已經出門，也能再確認家裡是關著的，不必來回檢查。</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
+      </div>
+      <div class="hero-float" aria-hidden="true">
+        <div class="float-top"><span>PRESENCE · LIGHT</span><span class="dot"></span></div>
+        <div class="float-title">人走進，燈就亮。</div>
+        <div class="float-status"><span>走廊微光已開</span><span>存在感應中</span></div>
+      </div>
+      <div class="wrap hero-bottom"><span class="scroll-indicator"><span class="bar"></span>SCROLL</span><span class="hero-index">01 — 05</span></div>
+    </section>
 
-<section class="sec" id="why" style="padding-top:12px">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow" style="text-align:center;margin-bottom:10px">PLAN WITH THE RENOVATION</div>
-      <h2>為什麼要在裝修時一起做</h2>
-      <div class="bar"></div>
-      <p class="sub">跟只賣設備的廠商不同，我們把智能家居放進裝修一起想。<br>線路、開關、燈光迴路和窗簾盒，一次規劃好。</p>
-    </div>
-    <div class="why">
-      <article>
-        <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
-          <rect x="6" y="8" width="36" height="32" rx="4" fill="none" stroke="#b8862b" stroke-width="1.8"/>
-          <path d="M6 16h36M18 8v8M30 8v8" stroke="#b8862b" stroke-width="1.8" fill="none"/>
-          <path d="M16 28h16M16 34h10" stroke="#2b2925" stroke-width="1.6"/>
-        </svg>
-        <h3>管線一次到位</h3>
-        <p>智能開關建議預留中性線，燈具迴路也要先分開。這些在拆改時一起做，比完工後再補管輕鬆許多。</p>
-      </article>
-      <article>
-        <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
-          <path d="M8 34V18l16-10 16 10v16H8z" fill="none" stroke="#b8862b" stroke-width="1.8"/>
-          <path d="M18 34v-10h12v10" fill="none" stroke="#2b2925" stroke-width="1.6"/>
-        </svg>
-        <h3>不必事後拆天花</h3>
-        <p>網關、感應器電源、窗簾電機和隱藏走線，最好在封天花板前就定位。事後加裝，常常得拆開重做。</p>
-      </article>
-      <article>
-        <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
-          <circle cx="24" cy="24" r="16" fill="none" stroke="#b8862b" stroke-width="1.8"/>
-          <path d="M24 12v12l8 5" stroke="#2b2925" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-        </svg>
-        <h3>跟空間一起設計</h3>
-        <p>燈光要分哪幾路、窗簾盒要留多深、感應要放哪個角落，都可以跟室內設計一次確認，用起來才直覺。</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="plans" style="padding-top:12px">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow" style="text-align:center;margin-bottom:10px">START WHERE YOU NEED</div>
-      <h2>三種開始的方式</h2>
-      <div class="bar"></div>
-      <p class="sub">內容是常見做法的說明，實際項目會依坪數與現場調整。<br>價格先留空，確認方案後再報價。</p>
-    </div>
-    <div class="tiers">
-      <article class="tier">
-        <div class="tag">01　入門</div>
-        <h3>感應燈組</h3>
-        <p class="price"><em>價格洽詢</em></p>
-        <p class="price-sub">NT$ ___ 起（待填）</p>
-        <ul>
-          <li>中樞網關與基礎設定</li>
-          <li>重點區域存在感應（走道、浴室、廚房等，採用 <span style="white-space:nowrap">Aqara FP2</span>）</li>
-          <li>智能開關，與現有或新裝燈具聯動</li>
-          <li>人來燈亮、人走燈滅、夜間微亮等情境</li>
-        </ul>
-        <div class="cta">
-          <a class="btn" href="https://www.beehome.live/appointment/預約流程" target="_top">預約體驗</a>
+    <section id="why" class="manifesto" aria-labelledby="why-title">
+      <div class="wrap manifesto-inner">
+        <div class="reveal">
+          <div class="overline">WHY DURING RENOVATION</div>
+          <div class="section-count">01 / 裝修時一起想</div>
         </div>
-      </article>
-      <article class="tier featured">
-        <div class="tag">02　進階</div>
-        <h3>燈光＋窗簾</h3>
-        <p class="price"><em>價格洽詢</em></p>
-        <p class="price-sub">NT$ ___ 起（待填）</p>
-        <ul>
-          <li>包含入門感應燈組</li>
-          <li>客廳或臥室智能窗簾，含軌道與電機</li>
-          <li>更多房間的燈光情境</li>
-          <li>回家自動開、離家一鍵關</li>
-        </ul>
-        <div class="cta">
-          <a class="btn" href="https://www.beehome.live/appointment/預約流程" target="_top">預約體驗</a>
-        </div>
-      </article>
-      <article class="tier">
-        <div class="tag">03　全屋</div>
-        <h3>全屋智能</h3>
-        <p class="price"><em>價格洽詢</em></p>
-        <p class="price-sub">NT$ ___ 起（待填）</p>
-        <ul>
-          <li>包含燈光與窗簾方案</li>
-          <li>全室燈光、窗簾與感應位置一併規劃</li>
-          <li>可依需求擴充，例如冷氣聯動或基本安防</li>
-          <li>全屋情境設定，並說明日常怎麼用</li>
-        </ul>
-        <div class="cta">
-          <a class="btn" href="https://www.beehome.live/appointment/預約流程" target="_top">預約體驗</a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="cases" style="padding-top:12px">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow" style="text-align:center;margin-bottom:10px">REAL HOMES</div>
-      <h2>實際案例</h2>
-      <div class="bar"></div>
-      <p class="sub">這裡之後會放完工照片，以及住進去後真正用到的情境。<br>目前先留位置，不用沒有授權的照片。</p>
-    </div>
-    <div class="cases">
-      <article class="case">
-        <div class="media" aria-label="案例照片位置，待補">
-          <div class="ph">
-            <div class="mark">案例照片　待補</div>
-            <div>
-              <svg width="48" height="40" viewBox="0 0 48 40" aria-hidden="true"><rect x="1" y="5" width="46" height="34" rx="4" fill="none" stroke="#c8b896" stroke-width="1.4"/><circle cx="16" cy="18" r="5" fill="none" stroke="#c8b896" stroke-width="1.4"/><path d="M4 33l12-12 8 8 6-6 14 10" fill="none" stroke="#b8862b" stroke-width="1.6"/></svg>
-            </div>
-            走道／夜間微亮
+        <div class="reveal">
+          <h2 id="why-title">我們做的，<br class="only-m">不只是加設備。<br><span>而是每天都<br class="only-m">用得到的方便。</span></h2>
+          <p>跟只賣設備的廠商不同，我們把智能家居放進裝修一起規劃。<br>線路、開關、燈光迴路和窗簾盒，一次想清楚。<br>住進去以後，才會直覺好用。</p>
+          <div class="principles">
+            <div class="principle"><strong>01　管線一次到位</strong><span>智能開關預留中性線，燈具迴路先分開。拆改時一起做，就不必事後補管。</span></div>
+            <div class="principle"><strong>02　不必事後拆天花</strong><span>網關、感應電源和窗簾電機，最好在封天花板前就定位。</span></div>
+            <div class="principle"><strong>03　跟空間一起設計</strong><span>燈光分路、窗簾盒和感應位置，都跟室內設計一次確認。</span></div>
           </div>
         </div>
-        <div class="card-body">
-          <h3>案例名稱（待填）</h3>
-          <p>情境說明（待填）</p>
-        </div>
-      </article>
-      <article class="case">
-        <div class="media" aria-label="案例照片位置，待補">
-          <div class="ph">
-            <div class="mark">案例照片　待補</div>
-            <div>
-              <svg width="48" height="40" viewBox="0 0 48 40" aria-hidden="true"><rect x="1" y="5" width="46" height="34" rx="4" fill="none" stroke="#c8b896" stroke-width="1.4"/><circle cx="16" cy="18" r="5" fill="none" stroke="#c8b896" stroke-width="1.4"/><path d="M4 33l12-12 8 8 6-6 14 10" fill="none" stroke="#b8862b" stroke-width="1.6"/></svg>
-            </div>
-            浴室／廚房感應燈
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>案例名稱（待填）</h3>
-          <p>情境說明（待填）</p>
-        </div>
-      </article>
-      <article class="case">
-        <div class="media" aria-label="案例照片位置，待補">
-          <div class="ph">
-            <div class="mark">案例照片　待補</div>
-            <div>
-              <svg width="48" height="40" viewBox="0 0 48 40" aria-hidden="true"><rect x="1" y="5" width="46" height="34" rx="4" fill="none" stroke="#c8b896" stroke-width="1.4"/><circle cx="16" cy="18" r="5" fill="none" stroke="#c8b896" stroke-width="1.4"/><path d="M4 33l12-12 8 8 6-6 14 10" fill="none" stroke="#b8862b" stroke-width="1.6"/></svg>
-            </div>
-            客廳窗簾與一鍵情境
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>案例名稱（待填）</h3>
-          <p>情境說明（待填）</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
+      </div>
+    </section>
 
-<section class="close">
-  <div class="wrap">
-    <h2>先預約體驗，或加入裝修報價</h2>
-    <div class="bar"></div>
-    <p class="sub">可以先預約看實際怎麼用，或加進裝修試算。<br>內容與價格都依現場再確認。</p>
-    <div class="cta" style="justify-content:center">
-      <a class="btn" href="https://www.beehome.live/appointment/預約流程" target="_top">預約體驗</a>
-      <a class="btn ghost" href="https://www.beehome.live/portfolio/裝修試算" target="_top">加入報價</a>
+    <section id="plans" class="services" aria-labelledby="plans-title">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <div>
+            <div class="overline">START WHERE YOU NEED</div>
+            <h2 id="plans-title">三種開始的方式。</h2>
+          </div>
+          <p class="intro">內容是常見做法的說明，實際項目會依坪數與現場調整。<br>價格先留空，確認方案後再報價。</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <div class="card-bg"></div>
+            <span class="service-index">01 / STARTER</span>
+            <h3>感應燈組</h3>
+            <p class="card-price">價格洽詢<small>NT$ _____ 起（待填）</small></p>
+            <p>中樞網關、重點區域存在感應（走道、浴室、廚房，採用 Aqara FP2），以及人來燈亮、夜間微亮等情境。</p>
+            <a class="card-arrow" href="https://www.beehome.live/appointment/預約流程" target="_top">預約體驗 <svg width="16" height="16"><use href="#arrow"/></svg></a>
+          </article>
+          <article class="service-card reveal">
+            <div class="card-bg"></div>
+            <span class="service-index">02 / LIGHT + CURTAIN</span>
+            <h3>燈光＋窗簾</h3>
+            <p class="card-price">價格洽詢<small>NT$ _____ 起（待填）</small></p>
+            <p>含入門感應燈組，加上客廳或臥室智能窗簾，以及回家開啟、離家一鍵關。</p>
+            <a class="card-arrow" href="https://www.beehome.live/appointment/預約流程" target="_top">預約體驗 <svg width="16" height="16"><use href="#arrow"/></svg></a>
+          </article>
+          <article class="service-card reveal">
+            <div class="card-bg"></div>
+            <span class="service-index">03 / WHOLE HOME</span>
+            <h3>全屋智能</h3>
+            <p class="card-price">價格洽詢<small>NT$ _____ 起（待填）</small></p>
+            <p>全室燈光、窗簾與感應一併規劃，可再擴充冷氣聯動或基本安防。</p>
+            <a class="card-arrow" href="https://www.beehome.live/appointment/預約流程" target="_top">預約體驗 <svg width="16" height="16"><use href="#arrow"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="scenes" class="smart-section" aria-labelledby="scenes-title">
+      <div class="smart-layout">
+        <div class="smart-copy reveal">
+          <div class="overline light">EVERYDAY SCENES</div>
+          <h2 id="scenes-title">住進去以後，<br>每天都會用到。</h2>
+          <p>點選下面的情境，看燈光、感應和窗簾會怎麼配合。<br>這是示意，實際會依你家的動線來設定。</p>
+          <div class="scene-tabs" role="group" aria-label="生活情境示範">
+            <button type="button" class="scene-tab active" data-scene="night" aria-pressed="true">夜起微亮 <span>01</span></button>
+            <button type="button" class="scene-tab" data-scene="bath" aria-pressed="false">進浴室 <span>02</span></button>
+            <button type="button" class="scene-tab" data-scene="leave" aria-pressed="false">出門全關 <span>03</span></button>
+            <button type="button" class="scene-tab" data-scene="home" aria-pressed="false">回家迎賓 <span>04</span></button>
+          </div>
+          <p class="scene-desc" id="sceneDesc" aria-live="polite">半夜起床，走廊只亮剛剛好的微光，不用摸黑找開關，也不會把客廳大燈一次打開。</p>
+        </div>
+        <div class="smart-photo" id="sceneVisual" aria-label="生活情境燈光示範畫面">
+          <div class="scene-hint"><span class="indicator"></span> SCENE PREVIEW</div>
+          <div class="photo-note">氛圍示意 · 待換成蜂宅實景或短影片</div>
+          <div class="control-panel" aria-live="polite">
+            <div class="panel-header"><strong id="panelTitle">夜起微亮</strong><small>BEEHOME / DEMO</small></div>
+            <div class="panel-rows">
+              <div class="panel-row"><span class="panel-icon"><svg><use href="#sun"/></svg></span><span class="panel-label">智慧燈光</span><span class="panel-value" id="lightValue">18% · 暖黃微光</span></div>
+              <div class="panel-row"><span class="panel-icon"><svg><use href="#sensor"/></svg></span><span class="panel-label">存在感應</span><span class="panel-value" id="sensorValue">感應中</span></div>
+              <div class="panel-row"><span class="panel-icon"><svg><use href="#curtain"/></svg></span><span class="panel-label">電動窗簾</span><span class="panel-value" id="curtainValue">維持關閉</span></div>
+              <div class="panel-row"><span class="panel-icon"><svg><use href="#away"/></svg></span><span class="panel-label">離家模式</span><span class="panel-value" id="awayValue">關閉</span></div>
+            </div>
+            <div class="panel-footer">視覺模擬，未接實體裝置。照片為氛圍圖，待換實景或影片。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" aria-labelledby="benefits-title">
+      <div class="wrap">
+        <div class="benefit-head reveal">
+          <div>
+            <div class="overline">WHAT YOU LIVE WITH</div>
+            <h2 id="benefits-title">少摸幾次開關。<br>多一分剛好。</h2>
+          </div>
+          <p>從最常用的感應燈開始也可以，之後再加窗簾或全屋情境。<br>設備藏進整體設計裡，不讓科技打斷空間。</p>
+        </div>
+        <div class="benefit-list">
+          <div class="benefit-item reveal"><div class="benefit-symbol">01 /</div><h3>存在感應燈光</h3><p>人在燈就亮，人走再慢慢關。半夜只亮微光，浴室即使站著不動也不會突然暗掉。</p><span class="arrow-circle">↗</span></div>
+          <div class="benefit-item reveal"><div class="benefit-symbol">02 /</div><h3>燈光與窗簾聯動</h3><p>回家、出門、就寢時，燈光和窗簾可以一起動作，不必逐一操作。</p><span class="arrow-circle">↗</span></div>
+          <div class="benefit-item reveal"><div class="benefit-symbol">03 /</div><h3>出門一鍵全關</h3><p>人已經在外面，也能再確認家裡的燈和窗簾是收好的。</p><span class="arrow-circle">↗</span></div>
+          <div class="benefit-item reveal"><div class="benefit-symbol">04 /</div><h3>裝修時一起規劃</h3><p>這是跟純設備商最大的不同：迴路、天花和窗簾盒在施工時一次到位。</p><span class="arrow-circle">↗</span></div>
+        </div>
+        <div class="partner-note reveal"><span>感應設備採用 Aqara，含 FP2 存在感應器。實際配置依現場規劃。</span></div>
+      </div>
+    </section>
+
+    <section id="cases" class="portfolio" aria-labelledby="cases-title">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <div>
+            <div class="overline">REAL HOMES</div>
+            <h2 id="cases-title">實際案例，稍後放上。</h2>
+          </div>
+          <p class="intro">這裡之後會放蜂宅的完工照片，以及住進去後真正用到的情境。<br>目前先用氛圍圖佔位。</p>
+        </div>
+        <div class="filters" role="group" aria-label="案例分類">
+          <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">全部</button>
+          <button class="filter-btn" type="button" data-filter="light" aria-pressed="false">感應燈</button>
+          <button class="filter-btn" type="button" data-filter="curtain" aria-pressed="false">窗簾與情境</button>
+        </div>
+        <div class="project-grid" id="projectGrid">
+          <article class="project-card reveal" data-tags="light">
+            <div class="project-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=83" alt="明亮現代住宅氛圍示意圖"><span>氛圍示意 · 待補實景</span></div>
+            <div class="project-info"><div><h3>案例名稱（待填）</h3><p>走道／夜間微亮 · 情境說明（待填）</p></div><svg><use href="#arrow"/></svg></div>
+          </article>
+          <article class="project-card reveal" data-tags="light">
+            <div class="project-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=900&q=83" alt="柔和室內空間氛圍示意圖"><span>氛圍示意 · 待補實景</span></div>
+            <div class="project-info"><div><h3>案例名稱（待填）</h3><p>浴室／廚房感應燈 · 情境說明（待填）</p></div><svg><use href="#arrow"/></svg></div>
+          </article>
+          <article class="project-card reveal" data-tags="curtain">
+            <div class="project-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=83" alt="沉穩燈光室內氛圍示意圖"><span>氛圍示意 · 待補實景</span></div>
+            <div class="project-info"><div><h3>案例名稱（待填）</h3><p>客廳窗簾與一鍵情境 · 情境說明（待填）</p></div><svg><use href="#arrow"/></svg></div>
+          </article>
+        </div>
+        <p class="portfolio-disclaimer">照片目前為 Unsplash 氛圍示意，不是蜂宅的完工案例。正式上線請換成已獲授權的作品照片與短影片。</p>
+      </div>
+    </section>
+
+    <section id="process" class="method" aria-labelledby="process-title">
+      <div class="wrap">
+        <div class="method-head reveal">
+          <div>
+            <div class="overline">HOW TO START</div>
+            <h2 id="process-title">想開始，<br class="only-m">可以從這三步。</h2>
+          </div>
+          <p>先看實際怎麼用，或直接把智能家居算進這次裝修。<br>內容與價格都依現場再確認。</p>
+        </div>
+        <div class="method-steps">
+          <article class="step reveal"><div class="step-index">01 — VISIT</div><h3>預約體驗</h3><p>先看感應燈與情境實際怎麼運作，也歡迎直接告訴我們坪數、屋況和你最在意的使用習慣。</p></article>
+          <article class="step reveal"><div class="step-index">02 — PLAN</div><h3>納入裝修規劃</h3><p>丈量與設計時，一併確認燈光迴路、感應位置、網關電源和窗簾盒，避免之後再拆天花補管。</p></article>
+          <article class="step reveal"><div class="step-index">03 — BUILD</div><h3>施工與設定</h3><p>跟其他工班一起安裝與設定，交付時說明日常怎麼用，需要時也可以再調整情境。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="wrap cta-inner reveal">
+        <div>
+          <div class="overline light">LET’S START</div>
+          <h2 id="cta-title">想先體驗，<br>或<em>直接算進裝修裡</em>。</h2>
+          <p>可以先預約看實際怎麼用，或加進裝修試算。<br>內容與價格都依現場再確認。</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-cream" href="https://www.beehome.live/appointment/預約流程" target="_top">預約體驗 <svg><use href="#arrow"/></svg></a>
+          <a class="btn btn-outline-white" href="https://www.beehome.live/portfolio/裝修試算" target="_top">加入報價 <svg><use href="#arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq" aria-labelledby="faq-title">
+      <div class="wrap faq-inner">
+        <div class="reveal">
+          <div class="overline">COMMON QUESTIONS</div>
+          <h2 id="faq-title">你可能想先知道的事。</h2>
+        </div>
+        <div class="reveal">
+          <details>
+            <summary>一定要在裝修時一起做嗎？</summary>
+            <p>不是必須。不過智能開關、燈光迴路和窗簾電機，在拆改與封天花板前一起規劃，通常比較不用事後補管或拆開重做。</p>
+          </details>
+          <details>
+            <summary>已經裝修好的房子，也可以加嗎？</summary>
+            <p>可以先評估。部分無線感應器和設備能後裝，但線路位置、開關型式和天花條件會影響能做到哪一步，實際以現場為準。</p>
+          </details>
+          <details>
+            <summary>你們用什麼設備？</summary>
+            <p>感應設備採用 Aqara，含 FP2 存在感應器。實際型號與數量依空間和需求規劃，我們不會為了賣設備而加沒有必要的項目。</p>
+          </details>
+          <details>
+            <summary>三種方案大概多少錢？</summary>
+            <p>價格依坪數、房間數和選定的配置而異，這頁先標「價格洽詢」與「NT$ _____ 起（待填）」，確認方案後再報給你。也可以先在裝修試算裡把智能家居加進去，看整體預算。</p>
+          </details>
+          <details>
+            <summary>可以先預約，不立刻施工嗎？</summary>
+            <p>可以。我們是全預約制，先體驗或先討論都可以。電話 0980-055-523，也可以透過 LINE 或 Email 聯絡。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="brand" href="#top">
+            <span class="brandmark"><svg><use href="#hex"/></svg></span>
+            <span class="brandname"><strong>蜂宅空間設計</strong><span>BEEHOME</span></span>
+          </a>
+          <p class="foot-about">以蜂巢為構想，讓空間有秩序。<br>室內裝修時，把智能家居一起規劃好。</p>
+        </div>
+        <div>
+          <div class="foot-label">EXPLORE</div>
+          <div class="foot-links">
+            <a href="#why">為什麼現在做</a>
+            <a href="#plans">方案</a>
+            <a href="#scenes">生活情境</a>
+            <a href="#cases">案例</a>
+            <a href="https://www.beehome.live/" target="_top">官方網站</a>
+          </div>
+        </div>
+        <div>
+          <div class="foot-label">CONTACT</div>
+          <div class="foot-links">
+            <a href="tel:0980055523">電話｜0980-055-523</a>
+            <span>營業時間｜9:00–17:00<br>全預約制</span>
+            <a href="https://lin.ee/wKeOphS" target="_top" rel="noopener">LINE</a>
+            <a href="mailto:iamglenn0630@gmail.com">Email</a>
+            <a href="https://www.instagram.com/bee_home___/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.facebook.com/Beehome.design" target="_blank" rel="noopener">Facebook</a>
+          </div>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 蜂宅室內裝修有限公司　統編 90446355</span>
+        <span>此頁為預覽草稿，尚未嵌入 www.beehome.live。</span>
+      </div>
     </div>
-    <p class="links">或直接聯絡　<a href="tel:0980055523">0980-055-523</a>　·　<a href="https://lin.ee/wKeOphS" target="_top" rel="noopener">LINE</a>　·　<a href="mailto:iamglenn0630@gmail.com">Email</a></p>
-  </div>
-</section>
+  </footer>
+
+  <script>
+  (function(){
+    'use strict';
+    const header=document.getElementById('header');
+    const menuToggle=document.getElementById('menuToggle');
+    const menuIcon=document.getElementById('menuIcon');
+    function updateHeader(){ header.classList.toggle('scrolled', window.scrollY>50); }
+    updateHeader();
+    window.addEventListener('scroll',updateHeader,{passive:true});
+    function setMenu(open){
+      header.classList.toggle('menu-open',open);
+      menuToggle.setAttribute('aria-expanded',String(open));
+      menuToggle.setAttribute('aria-label',open?'關閉選單':'開啟選單');
+      menuIcon.innerHTML=open?'<path d="M5 5l14 14M19 5 5 19"/>':'<path d="M3 7h18M3 12h18M3 17h18"/>';
+    }
+    menuToggle.addEventListener('click',()=>setMenu(!header.classList.contains('menu-open')));
+    document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+
+    const scenes={
+      night:{title:'夜起微亮',desc:'半夜起床，走廊只亮剛剛好的微光，不用摸黑找開關，也不會把客廳大燈一次打開。',light:'18% · 暖黃微光',sensor:'感應中',curtain:'維持關閉',away:'關閉',filter:'brightness(.4) sepia(.18) saturate(.8)',tint:'.32'},
+      bath:{title:'進浴室',desc:'走進浴室，燈自己亮起來。存在感應知道你還在裡面，就算站著不動，燈也會一直亮著。',light:'80% · 自然白',sensor:'有人在內',curtain:'維持原狀',away:'關閉',filter:'brightness(1.02) saturate(.88)',tint:'.04'},
+      leave:{title:'出門全關',desc:'出門一鍵，燈光和窗簾一次收好。人已經在外面，也能再確認家裡是關著的。',light:'已關閉',sensor:'全室無人',curtain:'已關閉',away:'已啟動',filter:'brightness(.3) saturate(.5)',tint:'.42'},
+      home:{title:'回家迎賓',desc:'回到家，玄關與走廊先亮起暖光，讓進門那幾步不用摸開關。',light:'85% · 暖白光',sensor:'已迎賓',curtain:'65% 開啟',away:'關閉',filter:'brightness(.92) sepia(.12) saturate(.85)',tint:'.08'}
+    };
+    const visual=document.getElementById('sceneVisual');
+    document.querySelectorAll('.scene-tab').forEach(button=>button.addEventListener('click',()=>{
+      const data=scenes[button.dataset.scene]; if(!data)return;
+      document.querySelectorAll('.scene-tab').forEach(btn=>{const active=btn===button;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',String(active));});
+      visual.style.setProperty('--scene-filter',data.filter);
+      visual.style.setProperty('--scene-tint',data.tint);
+      document.getElementById('sceneDesc').textContent=data.desc;
+      document.getElementById('panelTitle').textContent=data.title;
+      document.getElementById('lightValue').textContent=data.light;
+      document.getElementById('sensorValue').textContent=data.sensor;
+      document.getElementById('curtainValue').textContent=data.curtain;
+      document.getElementById('awayValue').textContent=data.away;
+    }));
+
+    document.querySelectorAll('.filter-btn').forEach(button=>button.addEventListener('click',()=>{
+      document.querySelectorAll('.filter-btn').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});
+      const filter=button.dataset.filter;
+      document.querySelectorAll('.project-card').forEach(card=>{card.hidden=(filter!=='all'&&!card.dataset.tags.split(' ').includes(filter));});
+    }));
+
+    if('IntersectionObserver' in window){
+      const io=new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');io.unobserve(entry.target);}});
+      },{threshold:.08,rootMargin:'0px 0px -20px 0px'});
+      document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
+    }
+  })();
+  </script>
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </body>
 </html>
