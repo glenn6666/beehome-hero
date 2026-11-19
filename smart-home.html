@@ -70,9 +70,16 @@
     .hamburger svg{width:23px;height:23px}
 
     .hero{min-height:780px;height:min(920px,100svh);position:relative;display:flex;align-items:center;color:#fff;background:#27241f;isolation:isolate;overflow:hidden}
-    .hero-photo{position:absolute;inset:0;z-index:0;background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=85');background-size:cover;background-position:center 52%}
-    .hero-photo-dim{filter:grayscale(.5) brightness(.85)}
-    .hero-photo-lit{--x:70%;--y:50%;--r:220px;z-index:1;-webkit-mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),#000 88%,transparent 100%);mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),#000 88%,transparent 100%)}
+    .hero-media{position:absolute;inset:0;z-index:0;background:#27241f}
+    .hero-video,.hero-still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 52%;display:block}
+    .hero-still{display:none}
+    .hero-spot{--x:70%;--y:50%;--r:220px;position:absolute;inset:0;z-index:1;pointer-events:none;background:rgba(18,16,12,.4);-webkit-mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),transparent 88%,#000 100%);mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),transparent 88%,#000 100%)}
+    @supports ((backdrop-filter:grayscale(.5)) or (-webkit-backdrop-filter:grayscale(.5))){
+      .hero-spot{background:transparent;backdrop-filter:grayscale(.5) brightness(.85);-webkit-backdrop-filter:grayscale(.5) brightness(.85)}
+    }
+    .hero-replay{position:absolute;right:6.1%;bottom:78px;z-index:5;display:none;align-items:center;justify-content:center;gap:6px;min-height:32px;padding:0 12px;border:1px solid rgba(255,255,255,.45);background:rgba(26,24,20,.42);color:rgba(255,255,255,.92);font-size:11px;font-weight:500;letter-spacing:.08em;border-radius:var(--radius);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+    .hero-replay:hover{background:rgba(26,24,20,.6);border-color:rgba(255,255,255,.7);transform:none}
+    .hero-replay:not([hidden]){display:inline-flex}
     .hero-veil{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(18,16,12,.72) 0%,rgba(18,16,12,.42) 32%,rgba(18,16,12,0) 62%),linear-gradient(180deg,rgba(0,0,0,.28),transparent 23%,transparent 66%,rgba(12,10,8,.32))}
     .spot-ring{position:absolute;left:0;top:0;border:1.5px solid rgba(255,255,255,.9);border-radius:50%;pointer-events:none;box-shadow:0 0 18px rgba(0,0,0,.15);z-index:3;opacity:0}
     .hero-copy{padding-top:124px;position:relative;z-index:4}
@@ -244,6 +251,7 @@
       .hero{min-height:710px;max-height:none;height:100svh}
       .hero h1{font-size:clamp(40px,7.4vw,68px)}
       .hero-float{right:6%;bottom:100px;transform:scale(.88);transform-origin:bottom right}
+      .hero-replay{right:6%;bottom:70px}
       .manifesto{padding:100px 0}
       .manifesto-inner,.benefit-head,.faq-inner{grid-template-columns:1fr;gap:20px}
       .section-count{display:none}
@@ -271,7 +279,8 @@
       .brandname span{font-size:8px}
       .nav-cta{font-size:11px;padding:0 10px;min-height:35px}
       .hero{min-height:670px;height:100svh}
-      .hero-photo{background-position:59% center;background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80')}
+      .hero-video,.hero-still{object-position:59% center}
+      .hero-replay{right:6%;bottom:58px}
       .hero-copy{padding-top:36px}
       .hero h1{font-size:clamp(40px,10.5vw,58px);line-height:1.45}
       .hero-text{font-size:13px;max-width:325px}
@@ -322,8 +331,10 @@
       html{scroll-behavior:auto}
       .reveal{opacity:1;transform:none}
       *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
-      .hero-photo-dim{filter:grayscale(.25) brightness(.95)}
-      .hero-photo-lit,.scene-photo-lit{--x:70%!important;--y:50%!important;--r:280px!important}
+      .hero-video{display:none}
+      .hero-still{display:block}
+      .hero-replay{display:none!important}
+      .hero-spot,.scene-photo-lit{--x:70%!important;--y:50%!important;--r:280px!important}
       .scene-photo-dim{filter:var(--scene-filter,brightness(.93)) saturate(.85) brightness(.95)}
       .spot-ring{display:none}
     }
@@ -363,8 +374,13 @@
 
   <main id="top">
     <section class="hero" id="hero" aria-labelledby="hero-title">
-      <div class="hero-photo hero-photo-dim" role="img" aria-label="溫潤現代住宅室內氛圍圖，示意用，待換成蜂宅實景"></div>
-      <div class="hero-photo hero-photo-lit" id="heroLit" aria-hidden="true"></div>
+      <div class="hero-media">
+        <img class="hero-still" src="assets/smart-home-hero-end.jpg" alt="" aria-hidden="true">
+        <video class="hero-video" id="heroVideo" autoplay muted playsinline webkit-playsinline preload="auto" poster="assets/smart-home-hero-poster.jpg" aria-label="溫潤現代住宅室內氛圍，日間轉入傍晚開燈，示意用，待換成蜂宅實景">
+          <source src="assets/smart-home-hero.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-spot" id="heroLit" aria-hidden="true"></div>
       <div class="hero-veil"></div>
       <div class="spot-ring" id="heroRing" aria-hidden="true"></div>
       <div class="wrap hero-copy">
@@ -381,6 +397,7 @@
         <div class="float-title">人走進，燈就亮。</div>
         <div class="float-status"><span>走廊微光已開</span><span>存在感應中</span></div>
       </div>
+      <button class="hero-replay" id="heroReplay" type="button" hidden>↻ 重播</button>
       <div class="wrap hero-bottom"><span class="scroll-indicator" id="lightHint"><span class="bar"></span>移動游標，燈會亮起來</span><span class="hero-index">01 — 05</span></div>
     </section>
 
@@ -678,6 +695,33 @@
     }
     attachSpotlight(document.getElementById('hero'),document.getElementById('heroLit'),document.getElementById('heroRing'));
     attachSpotlight(document.getElementById('sceneVisual'),document.getElementById('sceneLit'),document.getElementById('sceneRing'));
+
+    const heroVideo=document.getElementById('heroVideo');
+    const heroReplay=document.getElementById('heroReplay');
+    if(heroVideo){
+      heroVideo.muted=true;
+      heroVideo.playsInline=true;
+      heroVideo.loop=false;
+      if(reduced){
+        heroVideo.pause();
+        heroVideo.removeAttribute('autoplay');
+        heroVideo.querySelectorAll('source').forEach(s=>s.remove());
+        heroVideo.removeAttribute('src');
+        heroVideo.load();
+      }else{
+        const tryPlay=()=>{const p=heroVideo.play();if(p&&p.catch)p.catch(()=>{if(heroReplay)heroReplay.hidden=false;});};
+        if(heroVideo.readyState>=3)tryPlay();
+        else heroVideo.addEventListener('canplay',tryPlay,{once:true});
+        heroVideo.addEventListener('ended',()=>{if(heroReplay)heroReplay.hidden=false;});
+        if(heroReplay){
+          heroReplay.addEventListener('click',()=>{
+            heroReplay.hidden=true;
+            heroVideo.currentTime=0;
+            tryPlay();
+          });
+        }
+      }
+    }
 
     const scenes={
       night:{title:'夜起微亮',desc:'半夜起床，走廊只亮剛剛好的微光，不用摸黑找開關，也不會把客廳大燈一次打開。',light:'18% · 暖黃微光',sensor:'感應中',curtain:'維持關閉',away:'關閉',filter:'brightness(.4) sepia(.18) saturate(.8)',tint:'.32'},
