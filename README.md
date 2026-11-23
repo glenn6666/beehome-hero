@@ -7,3 +7,9 @@
 開啟減少動態效果或省流量設定時，預設顯示暖燈靜態圖；瀏覽器阻擋自動播放或影片載入失敗時也保留靜態畫面及手動播放控制。離開首屏或切到背景分頁會暫停；手動暫停後不會自行續播。
 
 執行 `node tests/hero-playback.cjs` 檢查播放狀態與備援行為。
+
+## 智能家居首屏
+
+官網「智能家居」實際嵌入 `smart-home-v2.html`。此頁使用兩張 ImageGen 產生的同鏡位傍晚玻璃屋情境圖（`assets/smart-glass-house-off.jpg`、`assets/smart-glass-house-on.jpg`），素材為示意，並非蜂宅實際完工案例。圖片就緒後自動漸亮，亦可手動開／關燈；保留原有方案、生活情境切換及諮詢表單。
+
+開啟減少動態效果時直接顯示亮燈畫面；使用者手動選擇後不再自行切換。手機版在首屏顯示期間收起底部固定諮詢列。`assets/smart-lighting.js` 負責狀態，執行 `node tests/smart-lighting.cjs` 驗證。
