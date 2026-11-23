@@ -13,3 +13,5 @@
 官網「智能家居」實際嵌入 `smart-home-v2.html`。此頁使用兩張 ImageGen 產生的同鏡位傍晚玻璃屋情境圖（`assets/smart-glass-house-off.jpg`、`assets/smart-glass-house-on.jpg`），素材為示意，並非蜂宅實際完工案例。圖片就緒後自動漸亮，亦可手動開／關燈；保留原有方案、生活情境切換及諮詢表單。
 
 開啟減少動態效果時直接顯示亮燈畫面；使用者手動選擇後不再自行切換。手機版在首屏顯示期間收起底部固定諮詢列。`assets/smart-lighting.js` 負責狀態，執行 `node tests/smart-lighting.cjs` 驗證。
+
+生活情境區使用同一室內鏡位的四張 ImageGen 示意影像，分別為低位夜燈、浴室局部照明、離家全關及回家暖光（`assets/smart-scene-*.jpg`）。`assets/smart-scenes.js` 同步影像、選取按鈕與說明；圖片未就緒時提供載入提示，快速切換不會被較慢的前次請求蓋回。執行 `node tests/smart-scenes.cjs` 驗證。
