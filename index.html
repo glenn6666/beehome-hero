@@ -4,34 +4,40 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:#2b2925;background:#faf8f4}
-.hero{position:relative;height:100vh;min-height:420px;overflow:hidden}
+.hero{position:relative;height:100svh;min-height:620px;max-height:1100px;overflow:hidden;background:#151a1d;color:#fff;isolation:isolate}
 .layer{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.after{--x:70%;--y:50%;--r:220px;
- -webkit-mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),#000 88%,transparent 100%);
- mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),#000 88%,transparent 100%)}
-.before{filter:grayscale(.5) brightness(.85)}
-.ring{position:absolute;left:0;top:0;border:1.5px solid rgba(255,255,255,.9);border-radius:50%;pointer-events:none;box-shadow:0 0 18px rgba(0,0,0,.15);z-index:3}
-.veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(250,248,244,.92) 0%,rgba(250,248,244,.7) 32%,rgba(250,248,244,0) 60%);pointer-events:none}
+.hero-video,.hero-still{object-position:center 54%;transition:opacity .7s ease}
+.hero-still{z-index:0}.hero-video{z-index:1}
+.hero.is-static .hero-video,.hero.is-lit .hero-video,.hero.is-fallback .hero-video{opacity:0}
+.veil{position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(10,15,18,.65),rgba(10,15,18,.18) 58%,rgba(10,15,18,.05)),linear-gradient(0deg,rgba(10,15,18,.6),transparent 65%,rgba(10,15,18,.25));pointer-events:none}
 .hex{position:absolute;inset:0;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cpath d='M28 0l28 16v32L28 64 0 48V16zM28 64l28 16v32M28 64L0 80v32' fill='none' stroke='%23b8862b' stroke-width='1.2'/%3E%3C/svg%3E");
  -webkit-mask-image:linear-gradient(90deg,#000,transparent 45%);mask-image:linear-gradient(90deg,#000,transparent 45%)}
-nav{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:26px 56px;z-index:5}
+nav{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:30px 5%;z-index:5}
 .logo{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:.12em}
 .logo svg{width:26px}
-.links{display:flex;gap:34px;font-size:14px;letter-spacing:.1em}
-.links a{color:#2b2925;text-decoration:none;opacity:.8}.links a:hover{opacity:1;color:#b8862b}
+.links{display:flex;align-items:center;gap:26px;font-size:14px;letter-spacing:.06em}
+.links a{color:#fff;text-decoration:none;opacity:.85}.links a:hover{opacity:1;color:#edcd98}
+.links a:last-child{padding:10px 18px;border:1px solid #ffffff50;border-radius:999px;background:#ffffff12}
 .btn{display:inline-block;padding:11px 24px;border-radius:999px;background:#2b2925;color:#fff;text-decoration:none;font-size:14px;letter-spacing:.12em;transition:.25s}
 .btn:hover{background:#b8862b}
 .btn.ghost{background:transparent;color:#2b2925;border:1px solid #2b2925}
-.copy{position:absolute;left:56px;top:50%;transform:translateY(-45%);max-width:480px;z-index:4}
-.eyebrow{font-size:12px;letter-spacing:.35em;color:#b8862b;margin-bottom:22px}
-h1{font-size:46px;line-height:1.35;font-weight:500;letter-spacing:.06em;margin-bottom:22px}
-.sub{font-size:16px;line-height:1.9;color:#5d5850;margin-bottom:36px}
-.hint{position:absolute;right:56px;bottom:36px;font-size:12px;letter-spacing:.25em;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5);z-index:4}
-.tag{position:absolute;bottom:36px;left:56px;font-size:12px;letter-spacing:.2em;color:#8a847a;z-index:4}
-@media(max-width:800px){nav{padding:18px 20px}.links{display:none}.copy{left:20px;right:20px;top:auto;bottom:90px;transform:none}h1{font-size:30px}
-.veil{background:linear-gradient(0deg,rgba(250,248,244,.95) 0%,rgba(250,248,244,.6) 45%,rgba(250,248,244,0) 70%)}.tag{display:none}.hint{right:20px;top:22px;bottom:auto;font-size:11px}}
+.copy{position:absolute;left:7.5%;bottom:15%;max-width:650px;z-index:4}
+.eyebrow{font-size:13px;letter-spacing:.23em;color:#f2d7aa;margin-bottom:20px;font-weight:500}
+h1{font-size:clamp(36px,4.4vw,66px);line-height:1.3;font-weight:500;letter-spacing:.025em;margin-bottom:20px;text-shadow:0 2px 25px #0004}
+.sub{font-size:16px;line-height:1.9;color:#ffffffe0;max-width:430px;margin-bottom:30px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.hero .btn{min-height:48px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:#fff;color:#20252a;letter-spacing:.06em}
+.hero .btn:hover{background:#e9d3b2}.hero .btn.ghost{border-color:#ffffff80;background:#ffffff10;backdrop-filter:blur(8px);color:#fff}.hero .btn.ghost:hover{background:#ffffff25}
+.hero-bottom{position:absolute;left:7.5%;right:5%;bottom:30px;z-index:4;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.scene-caption{font-size:13px;letter-spacing:.12em;color:#ffffffe0}
+.light-control{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:10px 16px;border:1px solid #ffffff55;border-radius:999px;background:#13202955;color:#fff;backdrop-filter:blur(10px);font:inherit;font-size:14px;cursor:pointer}
+.light-control:hover{background:#ffffff25}.light-control svg{width:16px;height:16px;flex:none}
+.hero a:focus-visible,.light-control:focus-visible{outline:3px solid #f2d7aa;outline-offset:5px}
+@media(max-width:950px){.links{gap:16px;font-size:13px}nav{padding:24px 5%}.logo{letter-spacing:.04em}}
+@media(max-width:800px){.hero{height:100svh;min-height:580px;max-height:950px}nav{padding:22px 24px}.logo{font-size:17px}.links a:not(:last-child){display:none}.links a:last-child{font-size:14px;padding:8px 13px;white-space:nowrap}.copy{left:24px;right:24px;bottom:125px;max-width:570px}.hero-video,.hero-still{object-position:62% center}h1{font-size:clamp(34px,7vw,48px)}.eyebrow{font-size:12px;letter-spacing:.16em;margin-bottom:17px}.sub{font-size:15px;max-width:340px;margin-bottom:24px}.veil{background:linear-gradient(0deg,#0b1218cc,#0b121844 70%,#0b121855)}.hero-bottom{left:24px;right:24px;bottom:26px}.scene-caption{font-size:12px;letter-spacing:.03em}.light-control{padding:10px 12px}}
+@media(max-width:380px){nav{padding:20px 18px}.logo{font-size:15px;gap:6px}.logo svg{width:21px}.copy{left:20px;right:20px}.hero-actions{gap:9px}.hero .btn{font-size:14px;padding:10px 18px}.hero-bottom{left:20px;right:20px;gap:8px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-video,.hero-still,.hero .btn{transition:none}}
 html{scroll-behavior:smooth}html,body{height:auto}
-nav .links a{color:#2b2925}
+nav .links a{color:#fff}
 .sec{padding:96px 56px;max-width:1280px;margin:0 auto}
 .sec h2{font-size:30px;font-weight:500;letter-spacing:.3em;text-align:center;margin-bottom:12px}
 .bar{width:44px;height:2px;background:#b8862b;margin:0 auto 48px}
@@ -52,20 +58,21 @@ footer a{color:#e9e4da}
 @media(max-width:800px){.sec{padding:64px 20px}.grid{grid-template-columns:1fr}.fwrap{grid-template-columns:1fr}footer{padding:48px 20px 24px}}
 </style></head><body>
 <section class="hero" id="hero">
- <img class="layer before" src="before.jpg" alt="裝修前">
- <img class="layer after" id="after" src="after.jpg" alt="裝修後">
- <div class="veil"></div><div class="ring" id="ring"></div><div class="hex"></div>
+ <img class="layer hero-still" src="assets/smart-home-hero-end.jpg" alt="" aria-hidden="true" fetchpriority="high">
+ <video class="layer hero-video" id="heroVideo" muted playsinline preload="metadata" poster="assets/smart-home-hero-poster.jpg" aria-label="住宅空間從日光轉為傍晚暖燈的燈光情境示意">
+  <source src="assets/smart-home-hero.mp4" type="video/mp4">
+ </video>
+ <div class="veil"></div>
 <nav><div class="logo"><svg viewBox="0 0 24 28"><path d="M12 1l11 6.5v13L12 27 1 20.5v-13z" fill="none" stroke="#b8862b" stroke-width="2"/></svg>蜂宅空間設計</div>
 <div class="links"><a href="#portfolio">作品集</a><a href="https://www.beehome.live/portfolio/全部作品" target="_top">全部作品</a><a href="https://www.beehome.live/portfolio/裝修試算" target="_top">裝修試算</a><a href="https://www.beehome.live/appointment/預約流程" target="_top">預約流程</a><a href="#contact">聯絡我們</a></div></nav>
 
  <div class="copy">
   <div class="eyebrow">BEEHOME INTERIOR DESIGN</div>
-  <h1>以蜂巢為構想，<br>讓空間有秩序</h1>
-  <p class="sub">把設計融入生活中…</p>
-  <a class="btn" href="https://www.beehome.live/portfolio/%E8%A3%9D%E4%BF%AE%E8%A9%A6%E7%AE%97" target="_top">免費裝修試算</a>&nbsp;&nbsp;<a class="btn ghost" href="https://www.beehome.live/portfolio/%E5%85%A8%E9%83%A8%E4%BD%9C%E5%93%81" target="_top">看作品</a>
+  <h1>以蜂巢為構想，<br>讓空間有秩序。</h1>
+  <p class="sub">把設計融入生活中。<br>從格局、材質到每一盞燈，打造剛剛好的日常。</p>
+  <div class="hero-actions"><a class="btn" href="https://www.beehome.live/appointment/%E9%A0%90%E7%B4%84%E6%B5%81%E7%A8%8B" target="_top">預約空間諮詢</a><a class="btn ghost" href="https://www.beehome.live/portfolio/%E5%85%A8%E9%83%A8%E4%BD%9C%E5%93%81" target="_top">探索設計作品</a></div>
  </div>
- <div class="tag">BEFORE ／ AFTER</div>
- <div class="hint" id="hint">移動游標，看見改變 →</div>
+ <div class="hero-bottom"><span class="scene-caption">LIGHT &amp; LIVING · 燈光情境演繹</span><button class="light-control" id="lightControl" type="button" aria-label="暫停亮燈動畫"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path id="controlIcon" d="M5 4h3v12H5zm7 0h3v12h-3z"/></svg><span id="controlText">暫停動畫</span></button></div>
 </section>
 <section class="sec" id="portfolio"><h2>PORTFOLIO</h2><div class="bar"></div>
 <div class="grid">
@@ -82,21 +89,38 @@ footer a{color:#e9e4da}
 <div><h4>公司資訊</h4>登記名稱｜蜂宅室內裝修有限公司<br>統編｜90446355<br>室內設計風格｜北歐風 現代風 簡約風<br>工業風 鄉村風 日式無印風</div>
 </div><div class="copyr">Copyright © 2022 Glenn Design Interior. Designed by Lisa</div></footer>
 <script>
-const ring=document.getElementById('ring');const el=document.getElementById('after'),hero=document.getElementById('hero');
-let tx=innerWidth*.7,ty=innerHeight*.5,x=tx,y=ty,r=0,tr=210,user=false,t0=performance.now();
-const touch=matchMedia('(hover:none)').matches||('ontouchstart' in window);
-if(touch)document.getElementById('hint').textContent='滑動看見改變 →';
-function setT(cx,cy){const b=hero.getBoundingClientRect();tx=cx-b.left;ty=cy-b.top;user=true;tr=innerWidth<800?150:210}
-hero.addEventListener('mousemove',e=>setT(e.clientX,e.clientY));
-hero.addEventListener('mouseleave',()=>{tr=0});
-hero.addEventListener('touchstart',e=>{const t=e.touches[0];setT(t.clientX,t.clientY)},{passive:true});
-hero.addEventListener('touchmove',e=>{const t=e.touches[0];setT(t.clientX,t.clientY)},{passive:true});
-hero.addEventListener('touchend',()=>{user=false;t0=performance.now()});
-window._rv=()=>({x,y,r});window.setReveal=(px,py,rad)=>{tx=x=px;ty=y=py;tr=r=rad||210;user=true};
-(function loop(n){
- if(!user&&(touch||n-t0>0)){const t=(n-t0)/1000,w=innerWidth,h=innerHeight;
-  tx=w*(.62+.2*Math.sin(t*.6));ty=h*(.45+.18*Math.sin(t*.9));tr=innerWidth<800?150:210}
- x+=(tx-x)*.09;y+=(ty-y)*.09;r+=(tr-r)*.08;
- el.style.setProperty('--x',x+'px');el.style.setProperty('--y',y+'px');el.style.setProperty('--r',r+'px');const rr=r*.94;ring.style.width=ring.style.height=2*rr+'px';ring.style.transform=`translate(${x-rr}px,${y-rr}px)`;ring.style.opacity=r>20?1:0;
- requestAnimationFrame(loop)})(performance.now());
+const hero=document.getElementById('hero'),video=document.getElementById('heroVideo');
+const control=document.getElementById('lightControl'),controlText=document.getElementById('controlText'),icon=document.getElementById('controlIcon');
+const motion=matchMedia('(prefers-reduced-motion: reduce)');
+const saveData=Boolean(navigator.connection&&navigator.connection.saveData);
+let manualPause=false,finished=false,blocked=false,inView=true,requestedPlay=false;
+function buttonText(text,playing){controlText.textContent=text;control.setAttribute('aria-label',text);icon.setAttribute('d',playing?'M5 4h3v12H5zm7 0h3v12h-3z':'M6 3l11 7-11 7z')}
+function canResume(){return !manualPause&&!finished&&!blocked&&!motion.matches&&!saveData&&inView&&!document.hidden}
+function playScene(){
+ requestedPlay=true;hero.classList.remove('is-static','is-fallback','is-lit');video.muted=true;
+ const result=video.play();
+ if(result&&result.catch)result.catch(()=>{requestedPlay=false;blocked=true;hero.classList.add('is-fallback');buttonText('播放亮燈',false)});
+}
+video.addEventListener('playing',()=>{requestedPlay=false;blocked=false;hero.classList.remove('is-fallback');buttonText('暫停動畫',true)});
+video.addEventListener('pause',()=>{if(!finished)buttonText('繼續播放',false)});
+video.addEventListener('ended',()=>{finished=true;requestedPlay=false;hero.classList.add('is-lit');buttonText('重播亮燈',false)});
+video.addEventListener('error',()=>{requestedPlay=false;blocked=true;hero.classList.add('is-fallback');buttonText('重試播放',false)});
+control.addEventListener('click',()=>{
+ if(!video.paused&&!video.ended){manualPause=true;requestedPlay=false;video.pause();return}
+ if(finished||video.ended){video.currentTime=0;finished=false}
+ if(video.error)video.load();
+ manualPause=false;blocked=false;playScene();
+});
+function visibility(){
+ if(document.hidden||!inView){video.pause();return}
+ if(canResume()&&video.paused&&!requestedPlay)playScene();
+}
+document.addEventListener('visibilitychange',visibility);
+if('IntersectionObserver' in window)new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;visibility()},{threshold:.1}).observe(hero);
+function preferences(){
+ if(motion.matches||saveData){video.autoplay=false;video.pause();hero.classList.add('is-static');buttonText('播放亮燈',false)}
+ else if(canResume()){video.autoplay=true;playScene()}
+}
+if(motion.addEventListener)motion.addEventListener('change',preferences);else motion.addListener(preferences);
+preferences();
 </script></body></html>
